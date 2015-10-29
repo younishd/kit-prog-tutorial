@@ -22,6 +22,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{listings}
 
 %% TITLE PICTURE
 
@@ -94,7 +95,7 @@
 
             \item Blauer Schein
             \begin{itemize}
-                \item Alle anderen Studiengänge
+                \item Alle anderen Studiengänge \dots
                 \item Im Studienbüro
                 \pause
                 \item \textbf{ZEITNAH !}
@@ -153,8 +154,102 @@
 \end{frame}
 
 \section{VPN}
+
+\begin{frame}{VPN}
+    \begin{block}{VPN}
+        \begin{itemize}
+            \item Möglichkeit, von außerhalb (z.B. von zu Hause) eine Verbindung mit dem KIT-Intranet herzustellen
+            \item Zugang mit KIT-Account
+            \item \url{https://www.scc.kit.edu/dienste/vpn.php}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
 \section{JDK}
+
+\begin{frame}{JDK}
+    \begin{block}{JDK Installation}
+        \begin{itemize}
+            \item Java Development Kit
+            \item Version 7 (\textit{nicht} 8)
+            \item OpenJDK oder Oracle JDK
+            \pause
+            \item Linux
+            \begin{itemize}
+                \item Via package manager
+                \item \url{openjdk-7-jdk} oder \url{jdk7-openjdk} oder \dots
+            \end{itemize}
+            \item Mac OS
+            \begin{itemize}
+                \item JDK sollte bereits vorinstalliert sein.
+            \end{itemize}
+            \item Windows
+            \begin{itemize}
+                \item JDK hier downloaden\\
+                \url{http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html}
+                \item \url{PATH} setzen !
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Editor}
+
+\begin{frame}{Editor}
+    \begin{itemize}
+        \item Atom
+        \item Brackets
+        \item Sublime Text
+        \item Kate (Linux)
+        \item TextMate (Mac)
+        \item Notepad++ (Windows)
+        \item nano (Linux+Mac)
+        \item \dots
+    \end{itemize}
+\end{frame}
+
 \section{Hello World in Java}
+
+\begin{frame}{Hello World in Java}
+    \begin{enumerate}
+        \item Schreibe folgenden Java-Code in Editor ab
+        \item Quelltext-Datei als \url{Hello.java} abspeichern
+        \item Kompilieren
+        \item Ausführen
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Hello World in Java}
+    \lstinputlisting[language=Java]{snippets/Hello.java}
+\end{frame}
+
+\section{Datentypen, Operationen und Variablen}
+
+\begin{frame}{Datentypen}
+    \begin{itemize}
+        \item
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Operationen}
+    \begin{itemize}
+        \item
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Variablen}
+    \begin{itemize}
+        \item
+    \end{itemize}
+\end{frame}
+
+\section{Kontrollflussanweisungen}
+
+\begin{frame}{Kontrollflussanweisungen}
+    \begin{itemize}
+        \item
+    \end{itemize}
+\end{frame}
 
 \appendix
 \beginbackup
@@ -168,6 +263,13 @@
         \item ILIAS
         \end{itemize}
     \end{alertblock}
+\end{frame}
+
+\begin{frame}{Bis nächste Woche !}
+    \begin{figure}
+        \includegraphics[scale=0.5]{img/compiling.png}
+    \end{figure}
+    \href{https://xkcd.com/303/}{[xkcd]}
 \end{frame}
 
 \backupend
