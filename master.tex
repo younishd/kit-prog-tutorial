@@ -82,7 +82,6 @@
 
 \section{Organisatorisches}
 
-\subsection{Prüfung und Übungsschein}
 \begin{frame}{Prüfung und Übungsschein}
     \begin{block}{Anmeldung zur Prüfung und zum Übungsschein}
         \begin{itemize}
@@ -104,7 +103,6 @@
     \end{block}
 \end{frame}
 
-\subsection{Einverständniserklärung}
 \begin{frame}{Einverständniserklärung}
     \begin{itemize}
         \item Solltet Ihr bereits abgegeben haben.
@@ -117,7 +115,6 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Praktomat und ILIAS}
 \begin{frame}{Praktomat und ILIAS}
     \begin{block}{Praktomat}
         \begin{itemize}
@@ -137,7 +134,6 @@
     \end{block}
 \end{frame}
 
-\subsection{Folien}
 \begin{frame}{Folien etc.}
     \begin{itemize}
         \item Vorlesung, Übungsblätter etc.\\ \url{https://sdqweb.ipd.kit.edu/wiki/Vorlesung\_Programmieren\_WS15/16}
@@ -145,7 +141,6 @@
     \end{itemize}
 \end{frame}
 
-\subsection{Kontakt}
 \begin{frame}{Kontakt}
     \begin{itemize}
         \item E-Mail: \url{younis.bensalah@riseup.net}
@@ -197,13 +192,21 @@
 
 \begin{frame}{Editor}
     \begin{itemize}
+        \pause
         \item Atom
+        \pause
         \item Brackets
+        \pause
         \item Sublime Text
+        \pause
         \item Kate (Linux)
+        \pause
         \item TextMate (Mac)
+        \pause
         \item Notepad++ (Windows)
+        \pause
         \item nano (Linux+Mac)
+        \pause
         \item \dots
     \end{itemize}
 \end{frame}
@@ -213,7 +216,7 @@
 \begin{frame}{Hello World in Java}
     \begin{enumerate}
         \item Schreibe folgenden Java-Code in Editor ab
-        \item Quelltext-Datei als \url{Hello.java} abspeichern
+        \item Quelltext-Datei als \texttt{Hello.java} abspeichern
         \item Kompilieren
         \item Ausführen
     \end{enumerate}
@@ -223,39 +226,218 @@
     \lstinputlisting[language=Java]{snippets/Hello.java}
 \end{frame}
 
+\begin{frame}[fragile]{Hello World in Java}
+    \begin{block}{Kompilieren}
+        \begin{lstlisting}
+% javac Hello.java
+        \end{lstlisting}
+    \end{block}
+    \pause
+    \begin{block}{Ausführen}
+        \begin{lstlisting}
+% java Hello
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Under the hood}
+    \begin{figure}
+        \includegraphics[scale=0.8]{img/jvm.png}
+    \end{figure}
+\end{frame}
+
 \section{Datentypen, Operationen und Variablen}
 
-\begin{frame}{Datentypen}
+\begin{frame}{Primitive Datentypen}
     \begin{itemize}
-        \item
+        \item Ganze Zahlen
+        \begin{itemize}
+            \item byte {\tiny 8-bit}
+            \item short {\tiny 16-bit}
+            \item int {\tiny 32-bit}
+            \item long {\tiny 64-bit}
+        \end{itemize}
+        \item Gleitkommazahlen
+        \begin{itemize}
+            \item float {\tiny 32-bit}
+            \item double {\tiny 64-bit}
+        \end{itemize}
+        \item Wahrheitswerte
+        \begin{itemize}
+            \item boolean {\tiny 1-bit (\textbf{true} oder \textbf{false})}
+        \end{itemize}
+        \item Zeichen
+        \begin{itemize}
+            \item char {\tiny 16-bit (Unicode)}
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Operationen}
+\begin{frame}{Datentyp \texttt{String}}
     \begin{itemize}
-        \item
+        \item \texttt{String} repräsentiert Zeichenketten
+        \item Konkatenation durch \texttt{+}
+        \item \texttt{String} ist eine Klasse !
+        \item \texttt{"Hello, world!"}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operationen}
+    \begin{itemize}
+        \item Arithmetische Operationen
+        \begin{verbatim}
++ - * / % ++ --
+        \end{verbatim}
+        \item Logische Operationen
+        \begin{verbatim}
+== != < <= >= > && || !
+        \end{verbatim}
+        \item Bitweise Operationen
+        \begin{verbatim}
+<< >> >>> & | ^ ~
+        \end{verbatim}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Variablen}
     \begin{itemize}
-        \item
+        \item \textbf{Variable} ist Bezeichner für eine Stelle im Speicher
+        \pause
+        \item \texttt{total = quantity * price;}\\ ist angenehmer als \\ \texttt{0x9DF1346C = 0x89EA24BF * 0x289D0A1B;}
+        \pause
+        \item \textbf{Deklaration}\\ \texttt{int answer;}
+        \item \textbf{Zuweisung} mit \texttt{=} Operator\\ \texttt{answer = 42;}
+        \pause
+        \item Oder kurz:\\ \texttt{int answer = 42;}
+        \pause
+        \item \textbf{Tipp:} Immer sofort bei der Deklaration auch einen Wert zuweisen.
     \end{itemize}
 \end{frame}
 
 \section{Kontrollflussanweisungen}
 
-\begin{frame}{Kontrollflussanweisungen}
-    \begin{itemize}
-        \item
-    \end{itemize}
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{block}{\texttt{if}}
+        \begin{itemize}
+            \item Wenn \textit{Kondition} dann \textit{Anweisungen} \dots
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{exampleblock}{Beispiel}
+            \begin{lstlisting}[language=Java]
+if (semester == 1) {
+    System.out.println("Hallo Ersti !");
+}
+            \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{block}{\texttt{if}}
+        \begin{itemize}
+            \item Wenn \textit{Kondition} dann \textit{Anweisungen} \dots sonst \textit{Anweisungen} \dots
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{exampleblock}{Beispiel}
+            \begin{lstlisting}[language=Java]
+if (semester == 1) {
+    System.out.println("Hallo Ersti !");
+} else {
+    System.out.println("Hallo Student !");
+}
+            \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{block}{\texttt{switch}}
+        \begin{itemize}
+            \item Fallunterscheidung
+            \item Alle \texttt{case} müssen konstant sein !
+            \item Nur für Typ \texttt{char, byte, short, int} oder \texttt{String} oder \texttt{enum} definiert !
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java,basicstyle=\tiny]
+switch (semester) {
+case 1:
+    System.out.println("Hallo Ersti !");
+    break;
+case 2:
+    System.out.println("Hallo Zweiti !");
+    break;
+case 3:
+    System.out.println("Hallo Dritti !");
+    break;
+case 4:
+    System.out.println("Hallo Vierti !");
+    break;
+case 5:
+    System.out.println("Hallo Fuenfti !");
+    break;
+case 6:
+    System.out.println("Hallo Sechsti !");
+    break;
+default:
+    System.out.println("Hallo Student !");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{block}{\texttt{while}}
+        \begin{itemize}
+            \item Solange \textit{Kondition} : \textit{Anweisungen} \dots
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{exampleblock}{Beispiel}
+            \begin{lstlisting}[language=Java]
+while (semester < 9000) {
+    System.out.println(
+        "Dieses Semester lerne ich wirklich...");
+    semester++;
+}
+            \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Kontrollflussanweisungen}
+    \begin{block}{\texttt{for}}
+        \begin{itemize}
+            \item Für \texttt{i} von \textit{Start} bis \textit{Ende} : \textit{Anweisungen} \dots
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{exampleblock}{Beispiel}
+            \begin{lstlisting}[language=Java]
+for (int i=1; i < 9000; i++) {
+    System.out.println(
+        "Oh, ich bin schon im " + i + ". Semester !");
+}
+            \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
 
 \appendix
 \beginbackup
 
-\begin{frame}{Nicht vergessen...}
-    \begin{alertblock}{Nicht vergessen...}
+\begin{frame}{Read the fine manual \dots}
+    \begin{itemize}
+        \item \textbf{Primitive Data Types} \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html}
+        \item \textbf{Operators} \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html}
+        \item \textbf{Variables} \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html}
+        \item \textbf{Control Flow Statements} \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Nicht vergessen !!!!!!!!!!!!!!!!!!11111!!!}
+    \begin{alertblock}{Nicht vergessen !!!!!!!!!!!!!!!!!!11111!!!}
         \begin{itemize}
         \item Anmeldung zur Prüfung und zum Übungsschein
         \item Einverständniserklärung
