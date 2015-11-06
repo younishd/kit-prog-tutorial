@@ -303,6 +303,7 @@ someday = 42;                   // auch fehler
 \begin{frame}{Bibliothek - Modellierungsversuch}
     \textbf{Wie könnte eine geeignete Modellierung (Objekte, Methoden, Attribute) der \textbf{Bibliothek} für folgendes Szenario aussehen ?}
     \begin{itemize}
+        \item Bibliothek hat eine Reihe von Büchern.
         \item Studenten sollen sich einmalig in der Bib anmelden können.
         \item Studenten sollen Bücher ausleihen (und zurückbringen) können.
         \item Studenten sollen evtl. anfallende Gebühren zahlen können.
@@ -314,6 +315,7 @@ someday = 42;                   // auch fehler
     \begin{itemize}
         \item \textbf{Bibliothek}
         \begin{itemize}
+            \item hat Liste aller verfügbaren Bücher
             \item hat Liste aller angemeldeten Studenten
             \item führt Buch über ausgeliehene Bücher (Student, Buch, Datum \dots)
             \item führt Buch über Gebühren
@@ -335,7 +337,6 @@ someday = 42;                   // auch fehler
             \item Regal
             \item Anzahl verfügbarer Exemplare
         \end{itemize}
-        \item \dots
     \end{itemize}
 
 \end{frame}
@@ -358,12 +359,241 @@ someday = 42;                   // auch fehler
 
 \subsection{Klassen}
 
+\begin{frame}{Klassen}
+    \begin{block}{Klasse}
+        Eine \textbf{Klasse} beschreibt das \textbf{abstrakte Modell} für eine Reihe von ähnlichen Objekten.
+    \end{block}
+
+    \begin{block}{Objekt}
+        Ein \textbf{Objekt} ist eine \textbf{konkrete Ausprägung} einer Klasse.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Klassen und Objekte in Java}
+    Man definiert eine Klasse in Java mit \texttt{class}:
+    \begin{exampleblock}{\texttt{class}}
+        \begin{lstlisting}[language=Java]
+public class Car {
+
+    // attributes
+    // ...
+
+    // methods
+    // ...
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Klassen und Objekte in Java}
+    \begin{itemize}
+        \item \textbf{Instanziierung} = das Erzeugen eines Objekts von einer Klasse
+        \item Man \textit{instanziiert} eine Klasse und erhält ein \textbf{Objekt}.\\
+    \end{itemize}
+
+    \begin{exampleblock}{Instanziierung}
+        \begin{lstlisting}[language=Java]
+Car myCar = new Car();
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Klasse vs. Objekt}
+    \begin{itemize}
+        \item Die \textbf{Klasse} ist der \textbf{Bauplan}.
+        \item Die \textbf{Objekte} sind die fertigen \textbf{Häuser}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Klasse vs. Objekt}
+    \begin{figure}
+        \includegraphics[scale=0.3]{img/classvsobject.png}
+    \end{figure}
+\end{frame}
+
 \subsection{Attribute}
+
+\begin{frame}{Attribute}
+    \begin{itemize}
+        \item Attribute definieren den Zustand eines Objekts.
+        \item Verschiedene Objekte vom gleichen Typ haben verschiedene Zustände.
+        \item \textit{Es gibt verschiedene Ampeln, aber nicht alle sind gleichzeitig Grün.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Attribute}
+    \begin{exampleblock}{Attribute}
+        \begin{lstlisting}[language=Java]
+public class Car {
+
+    private int velocity;
+    private Gear gear;
+    // ...
+
+    // methods
+    // ...
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
 
 \subsection{Methoden}
 
+\begin{frame}{Methoden}
+    \begin{itemize}
+        \item Methoden beschreiben das Verhalten von Objekten.
+        \item Alle Objekte vom gleichen Typ können die gleichen Funktionen ausführen.
+        \item \textit{Alle Ampeln können von Rot auf Grün schalten.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Methoden}
+    \begin{exampleblock}{Methoden}
+        \begin{lstlisting}[language=Java]
+public class Car {
+
+    private int velocity;
+    private Gear gear;
+    // ...
+
+    public void startEngine() { ... }
+    public void shiftUp() { ... }
+    public void shiftDown() { ... }
+    // ...
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Methodenaufruf}
+    \begin{exampleblock}{Methodenaufruf}
+        \begin{lstlisting}[language=Java]
+Car myCar = new Car();
+
+myCar.startEngine();
+myCar.shiftUp();
+myCar.shiftUp();
+myCar.shiftUp();
+myCar.shiftUp();
+myCar.shiftUp();
+myCar.shiftUp();
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}{Signatur einer Methode}
+    Die \textbf{Methodensignatur} definiert die \textbf{Schnittstelle} einer Methode.
+    \begin{itemize}
+        \item Wie lautet der Name der Methode ?
+        \item Welche Typen von Werten kommen rein ?
+        \item Welcher Typ von Wert wird zurückgegeben ?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Signatur einer Methode}
+    \begin{exampleblock}{Beispiele}
+        \begin{itemize}
+            \item \texttt{float getTemperature()}
+            \item \texttt{boolean isAvailable( Book b )}
+            \item \texttt{void makeCoffee( int sugar, int milk )}
+        \end{itemize}
+    \end{exampleblock}
+
+    \pause
+
+    \textbf{Bemerkung:} Das Schlüsselwort \texttt{void} bedeutet hier "Kein Rückgabetyp". Die Methode gibt also nichts zurück !
+
+\end{frame}
+
+\begin{frame}{Rückgabewert}
+    Eine Methode darf einen Wert zurückgeben.
+    \begin{itemize}
+        \item Der Rückgabewert wird an den Aufrufer weitergereicht.
+        \item Ob und was eine Methode zurückgibt ist durch die Methodensignatur definiert.
+        \item Schlüsselwort \texttt{return}, gefolgt vom zurückgegebenen Wert.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Rückgabewert}
+    \begin{exampleblock}{Beispiel 1}
+        \begin{lstlisting}[language=Java]
+float t0 = cpu0.getTemperature();
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Rückgabewert}
+    \begin{exampleblock}{Beispiel 2}
+        \begin{lstlisting}[language=Java]
+public int sum(int a, int b) {
+    return a + b;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Rückgabewert}
+    \begin{exampleblock}{Beispiel 3}
+        \begin{lstlisting}[language=Java]
+public int max(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Rückgabewert}
+    \begin{exampleblock}{Beispiel 4}
+        \begin{lstlisting}[language=Java]
+public int max(int a, int b) {
+    if (a > b) {
+        return a;
+    }
+    return b;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Die wichtigste aller Methoden: main}
+    Die \texttt{main} Methode markiert den Startpunkt des Programms.
+    \begin{exampleblock}{\texttt{main}}
+        \begin{lstlisting}[language=Java]
+public class MainProgram {
+    public static void main(String[] args) {
+        // ...
+    }
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
 \appendix
 \beginbackup
+
+\begin{frame}{Fragen ?}
+    \begin{figure}
+        \includegraphics[scale=0.3]{img/fragen.jpg}
+    \end{figure}
+\end{frame}
 
 \begin{frame}{Bis nächste Woche !}
     \begin{figure}
