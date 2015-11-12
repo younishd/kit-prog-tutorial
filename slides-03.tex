@@ -405,7 +405,27 @@ public class Dog {
 
 \end{frame}
 
-% TODO some example here
+\begin{frame}[fragile]{this-Referenz}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+Dog odie = new Dog("Odie");
+Dog struppi = new Dog("Struppi");
+
+odie.sayName();
+struppi.sayName();
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+    \begin{exampleblock}{Ausgabe}
+        \begin{lstlisting}[language=Java]
+Wauwau wau Odie
+Wauwau wau Struppi
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
 
 \begin{frame}{Mehrere Konstruktoren}
     Java erlaubt es, \textit{mehrere} Konstruktoren zu definieren.
@@ -453,33 +473,78 @@ black           = new Color();
 
 \section{Methoden}
 
-\begin{frame}{Methoden}
-    \begin{exampleblock}{}
-        Methoden beschreiben das Verhalten von Objekten.
-    \end{exampleblock}
-
+\begin{frame}[fragile]{Methoden}
+    Methoden \dots
     \begin{itemize}
-        \item Methoden können Berechnungen durchführen
-        \item Methoden können den Zustand des Objekts verändern
-        \item \dots
+        \item beschreiben das Verhalten von Objekten
+        \item können Berechnungen durchführen
+        \item können Werte züruckgeben
+        \item können den Zustand des Objekts verändern
     \end{itemize}
 
+
+
 \end{frame}
 
-\begin{frame}{Parameter}
-    body
-\end{frame}
+\begin{frame}[fragile]{Parameter}
+    \begin{itemize}
+        \item Ein Parameter ist eine spezielle Variable, welche einen an eine Methode übergebenen Wert beinhaltet.
+        \pause
+        \item Es wird zwischen \textbf{formalen} und \textbf{aktuellen} Parametern unterschieden:
+        \begin{itemize}
+            \item Formaler Parameter: Der Name, der bei der Deklaration der Methode gewählt wurde
+            \item Aktueller Parameter: Der Wert, der beim Aufruf für den formalen Parameter eingesetzt wird
+        \end{itemize}
+    \end{itemize}
 
-\begin{frame}{Formaler Parameter - Aktueller Parameter}
-    body
+    \pause
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+public Dog(String name) { ... } // formaler parameter
+
+String someName = "Odie";
+Dog odie = new Dog(someName);  // aktueller parameter
+        \end{lstlisting}
+    \end{exampleblock}
+
 \end{frame}
 
 \begin{frame}{Lokale Variablen}
-    body
+    \textbf{Lokale Variablen}
+    \begin{itemize}
+        \item sind Hilfsspeicher für Zwischengrößen in Methoden
+        \item werden auf dem \textbf{Stack} abgelegt
+        \item existieren nur, solange die Methode abgearbeitet wird
+        \item \alert{werden nicht automatisch initialisiert}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Rückgabetyp void}
-    body
+\begin{frame}[fragile]{Lokale Variablen}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+public void swapCoordinates() {
+    int temp = this.x;  // lokale hilfsvariable
+    this.x = this.y;
+    this.y = temp;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{void}
+    Der Rückgabetyp \texttt{void} wird verwendet, wenn eine Methode \textbf{keinen Wert zurückgeben} soll.
+
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+public void setXCoordinate(int x) {
+    this.xCoordinate = x;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+
+
 \end{frame}
 
 \begin{frame}{Wert - Referenz}
@@ -498,10 +563,68 @@ black           = new Color();
     body
 \end{frame}
 
-\begin{frame}{Main}
-    Die \texttt{main}-Methode ist eine statische Methode.
+\begin{frame}[fragile]{Main}
+    Die \texttt{main}-Methode:
+    \begin{itemize}
+        \item ist eine statische Methode
+        \item markiert den Startpunkt des Programms
+    \end{itemize}
+
+    \begin{exampleblock}{\texttt{main}}
+        \begin{lstlisting}[language=Java]
+public static void main(String argv[]) {
+    // do something...
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
 
 \end{frame}
+
+\begin{frame}[fragile]{argv[]}
+    \texttt{argv[]} enthält die Parameter, welche in der Kommandozeile an das Programm übergeben werden.
+    \pause
+    \begin{exampleblock}{Kommandozeile}
+        \begin{lstlisting}
+% java MyProgram 42 -v 9000 foo
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{argv[]}
+
+    \begin{exampleblock}{Im Programm}
+        \begin{lstlisting}[language=Java]
+public class MyProgram {
+
+    public static void main(String argv[]) {
+        System.out.println("argv[0] ist " + argv[0]);
+        System.out.println("argv[1] ist " + argv[1]);
+        System.out.println("argv[2] ist " + argv[2]);
+        System.out.println("argv[3] ist " + argv[3]);
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{argv[]}
+
+    \begin{exampleblock}{Ausgabe}
+        \begin{lstlisting}
+argv[0] ist 42
+argv[1] ist -v
+argv[2] ist 9000
+argv[3] ist foo
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
 
 \begin{frame}{Statische Attribute}
     body
