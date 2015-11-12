@@ -95,11 +95,18 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{In manchen Tutorien gerade...}
+    \begin{figure}
+        \includegraphics[scale=.5]{img/tuturien.jpg}
+    \end{figure}
+\end{frame}
+
+
 \section{Konstruktoren}
 
 \begin{frame}{Konstruktoren}
     \begin{itemize}
-        \item Der \textbf{Konstruktor} ist eine spezielle Methode, die beim Erstellen eines neuen Objekts aufgerufen wird.
+        \item Der \textbf{Konstruktor} ist eine spezielle Methode, die beim Erstellen eines neuen Objekts (\texttt{new}) aufgerufen wird.
         \item Attribute werden initialisiert.
         \item Das neue Objekt erhält einen gültigen Startzustand.
     \end{itemize}
@@ -109,8 +116,12 @@
     \begin{itemize}
         \item Java stellt für jede Klasse zunächst einen \textbf{Default-Konstruktor} (default constructor) zur Verfügung.
         \item Keine Argumente
-        \item Alle Attribute werden mit Null initialisiert.
+        \item Alle Attribute werden mit Null* initialisiert.
     \end{itemize}
+
+
+    \vspace{.5in}
+    [*] \textit{Default Values:} \url{https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html}
 
 \end{frame}
 
@@ -126,21 +137,196 @@ Dog odie = new Dog();
 
 \end{frame}
 
+\begin{frame}[fragile]{Default-Konstruktor}
+    \begin{exampleblock}{Noch ein Beispiel}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class Product {
 
-\begin{frame}{Eigener Konstruktor}
-    Das klingt doch praktisch ! Brauche ich mehr ?
+    private double price;
+    private int quantity;
+    private String identifier;
+    private boolean primeEligible;
+
+    public void display() {
+        System.out.println("Price: " + this.price);
+        System.out.println("Quantity: " + this.quantity);
+        System.out.println("Identifier: " + this.identifier);
+        System.out.println("Prime eligible: " + this.primeEligible);
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Default-Konstruktor}
+\begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+Product p = new Product();
+p.display();
+    \end{lstlisting}
+\end{exampleblock}
+
+    \begin{exampleblock}{Ausgabe}
+        \begin{lstlisting}
+Price: 0.0
+Quantity: 0
+Identifier: null
+Prime eligible: false
+        \end{lstlisting}
+
+    \end{exampleblock}
+
 \end{frame}
 
 \begin{frame}{Eigener Konstruktor}
+    Es ist möglich, einen eigenen Konstruktor zu definieren.
+    \begin{itemize}
+        \item Man kann selbst bestimmen, mit welchen Werten das Objekt initialisiert wird.
+        \item Welche Werte machen für eine bestimmte Klasse Sinn ?
+        \item Anfangswerte können als Parameter übergeben werden.
+        \item Prüfen, ob übergebene Werte gültig sind.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Eigener Konstruktor}
+    \textit{Der Default-Konstruktor klingt doch praktisch !\\ Brauche ich überhaupt mehr ?}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor}
+    \begin{exampleblock}{Macht das Sinn ?}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class Fraction {
+
+    private int numerator;
+    private int denominator;
+
+    public int approximate() {
+        return this.numerator / this.denominator;
+    }
+
+    // ...
+
+}
+
+Fraction f = new Fraction();
+int x = f.approximate();
+        \end{lstlisting}
+
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Eigener Konstruktor}
+    \begin{figure}
+        \includegraphics[scale=0.32]{img/iaccidentallyby0.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Eigener Konstruktor}
+    \textbf{Java kann nicht die Bedeutung der Attribute ahnen !}\\
+    \vspace{.5in}
+    \pause
+    Der Entwickler muss also dafür sorgen, dass \dots
+    \begin{itemize}
+        \item Attribute mit gültigen Werten initialisiert werden (siehe Konstruktor)
+        \item Attribute im Laufe der Anwendung keine unzulässigen Werte annehmen
+        \item keine Inkonsistenzen auftreten können
+        \item ein Objekt nicht in einen ungültigen Zustand geraten kann
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor}
+    Man definiert einen Konstruktor in Java wie folgt:
+    \begin{exampleblock}{Konstruktor}
+        \begin{lstlisting}[language=Java]
+public class Dog {
+
+    public Dog(...) {
+        ...
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Eigener Konstruktor}
+    \textit{\dots also wie eine Methode ?} - \textbf{Fast !}
+    \begin{itemize}
+        \item Kein Rückgabetyp
+        \item Auch nicht \texttt{void}
+        \item Methodenname == Klassenname
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor}
+    \begin{exampleblock}{Beispiel 1}
+        \begin{lstlisting}[language=Java]
+public class Cat {
+
+    private int lives;
+
+    public Cat() {
+        this.lives = 9;
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor}
+    \begin{exampleblock}{Beispiel 2}
+        \begin{lstlisting}[language=Java]
+public class Dog {
+
+    private String name;
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Eigener Konstruktor}
+    \textit{\dots aber wie rufe ich den Konstruktor auf ?}
+    \pause
+    \\
+    \vspace{.2in}
+    {\huge Mit \texttt{new} !}
+    \vspace{.2in}
+    \begin{exampleblock}{Konstruktor}
+        \begin{lstlisting}[language=Java]
+Cat garfield = new Cat();
+Dog odie = new Dog("Odie");
+        \end{lstlisting}
+
+    \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}{Eigener Konstruktor}
     \begin{alertblock}{Vorsicht !}
-        Sobald man einen eigenen Konstruktor definiert, verschwindet der Default-Konstruktor von Java.
+        Sobald man einen eigenen Konstruktor definiert, \textbf{verschwindet der Default-Konstruktor} von Java.
     \end{alertblock}
 \end{frame}
 
 \begin{frame}[fragile]{Eigener Konstruktor}
     \begin{exampleblock}{Das wäre auch zu schön}
         \begin{lstlisting}[language=Java]
-class Dog {
+public class Dog {
 
     private String name;
 
@@ -159,19 +345,125 @@ Dog odie = new Dog();  // nicht mehr ok
 
 \end{frame}
 
+\begin{frame}[fragile]{Eigener Konstruktor}
+    \begin{exampleblock}{Jetzt geht es wieder}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class Dog {
+    // ...
+
+    public Dog() {
+        this.name = "Odie";
+    }
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
+}
+
+Dog struppi = new Dog("Struppi");  // ok
+Dog odie = new Dog();  // jetzt auch ok
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+    \pause
+    \textit{Hä \dots wie geht das ?}
+    \pause
+    \textbf{- Kommt gleich !}
+
+\end{frame}
+
 
 \begin{frame}{this-Referenz}
-    body
+    Die \texttt{this}-Referenz erlaubt es, innerhalb einer Methode auf Attribute des Objekts zuzugreifen.
+    \begin{itemize}
+        \item Unterscheidung zwischen \textbf{Attributen} und \textbf{Variablen}
+        \item \texttt{this} ist vordefiniert !
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Mehrere Konstruktoren}
-    body
+\begin{frame}[fragile]{this-Referenz}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+public class Dog {
+
+    private String name;
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
+    public void sayName() {
+        System.out.println("Wauwau wau " + this.name);
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
 \end{frame}
+
+% TODO some example here
+
+\begin{frame}{Mehrere Konstruktoren}
+    Java erlaubt es, \textit{mehrere} Konstruktoren zu definieren.
+    \begin{itemize}
+        \item Die Konstruktoren müssen sich in Anzahl oder Typ ihrer Argumente unterscheiden
+        \item Erzeugen eines Objekts auf verschiedene Weise möglich
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Mehrere Konstruktoren}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class Color {
+
+    public Color(int red, int green, int blue) { ... }
+
+    public Color(int red, int green, int blue, int alpha) { ... }
+
+    public Color(String hex) { ... }
+
+    public Color() { ... }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Mehrere Konstruktoren}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+Color lime, pink, lightblue, black;
+
+lime            = new Color(180, 255, 32);
+pink            = new Color(255, 56, 246, 180);
+lightblue       = new Color("4ABAFF");
+black           = new Color();
+
+        \end{lstlisting}
+
+    \end{exampleblock}
+\end{frame}
+
 
 \section{Methoden}
 
 \begin{frame}{Methoden}
-    body
+    \begin{exampleblock}{}
+        Methoden beschreiben das Verhalten von Objekten.
+    \end{exampleblock}
+
+    \begin{itemize}
+        \item Methoden können Berechnungen durchführen
+        \item Methoden können den Zustand des Objekts verändern
+        \item \dots
+    \end{itemize}
+
 \end{frame}
 
 \begin{frame}{Parameter}
@@ -206,7 +498,16 @@ Dog odie = new Dog();  // nicht mehr ok
     body
 \end{frame}
 
+\begin{frame}{Main}
+    Die \texttt{main}-Methode ist eine statische Methode.
+
+\end{frame}
+
 \begin{frame}{Statische Attribute}
+    body
+\end{frame}
+
+\begin{frame}{Standard Ein- und Ausgabe}
     body
 \end{frame}
 
