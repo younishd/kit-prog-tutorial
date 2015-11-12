@@ -482,11 +482,18 @@ black           = new Color();
         \item können den Zustand des Objekts verändern
     \end{itemize}
 
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+double convertToFahrenheit(double celsius) {
+    return (celsius * 9.0) / 5.0 + 32.0;
+}
+        \end{lstlisting}
+    \end{exampleblock}
 
 
 \end{frame}
 
-\begin{frame}[fragile]{Parameter}
+\begin{frame}{Parameter}
     \begin{itemize}
         \item Ein Parameter ist eine spezielle Variable, welche einen an eine Methode übergebenen Wert beinhaltet.
         \pause
@@ -497,7 +504,9 @@ black           = new Color();
         \end{itemize}
     \end{itemize}
 
-    \pause
+\end{frame}
+
+\begin{frame}[fragile]{Parameter}
     \begin{exampleblock}{Beispiel}
         \begin{lstlisting}[language=Java]
 public Dog(String name) { ... } // formaler parameter
@@ -506,8 +515,8 @@ String someName = "Odie";
 Dog odie = new Dog(someName);  // aktueller parameter
         \end{lstlisting}
     \end{exampleblock}
-
 \end{frame}
+
 
 \begin{frame}{Lokale Variablen}
     \textbf{Lokale Variablen}
@@ -543,17 +552,118 @@ public void setXCoordinate(int x) {
         \end{lstlisting}
     \end{exampleblock}
 
+\end{frame}
 
+\begin{frame}[fragile]{Wert vs. Referenz}
+    Was passiert in diesem Code \dots
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class Number {
+
+    private int value;
+
+    public Number(int value) {
+        this.value = value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
 
 \end{frame}
 
-\begin{frame}{Wert - Referenz}
-    body
+\begin{frame}[fragile]{Wert vs. Referenz}
+    \begin{exampleblock}{}
+\begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public static int fortyTwo(int n) {
+    n = 42;
+    return n;
+}
+
+public static Number fortyTwo(Number n) {
+    n.setValue(42);
+    return n;
+}
+
+int firstNumber = 1;
+int firstResult = fortyTwo(firstNumber);
+System.out.println("firstNumber = " + firstNumber);
+System.out.println("firstResult = " + firstResult);
+
+Number secondNumber  = new Number(1);
+Number secondResult = fortyTwo(secondNumber);
+System.out.println("secondNumber = " + secondNumber.getValue());
+System.out.println("secondResult = " + secondResult.getValue());
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Wert vs. Referenz}
+    \begin{alertblock}{Ausgabe}
+        \begin{lstlisting}
+firstNumber = 1
+firstResult = 42
+secondNumber = 42
+secondResult = 42
+        \end{lstlisting}
+    \end{alertblock}
+
+    \pause
+    \vspace{.5in}
+    \textit{Was ist hier los ?}
+
+\end{frame}
+
+\begin{frame}{Wert vs. Referenz}
+    \begin{block}{}
+        \textbf{Objekte als Parameter} werden als \textbf{Referenz} an die Methode übergeben
+        \begin{itemize}
+            \item Die Methode erhält \textbf{Referenz} auf Objekt im Speicher
+            \item Das Objekt kann also \textbf{von der Methode modifiziert} werden
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{}
+        Sonstige Parameter (primitive Datentypen) werden \textbf{kopiert}
+        \begin{itemize}
+            \item Die Methode erhält \textbf{Kopie} der Variable
+            \item Änderungen innerhalb der Methode haben also \textbf{keine Auswirkung nach außen}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Private Methoden}
+    \textbf{Private Methoden}
+    \begin{itemize}
+        \item sind nur innerhalb Methoden derselben Klasse erreichbar
+        \item dienen oft als \textbf{Hilfsmethoden}
+        \item sind nach außen hin \textit{nicht} sichtbar
+        \item Schlüsselwort \texttt{private}
+    \end{itemize}
+
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+private double convertToFahrenheit(double celsius) {
+    return (celsius * 9.0) / 5.0 + 32.0;
+}
+        \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}{Private Methoden}
-    body
+    \textit{Mehr dazu kommt im Kapitel zur \textbf{Sichtbarkeit} (scope)} !
 \end{frame}
+
 
 \begin{frame}{Überladen von Methoden}
     body
@@ -572,7 +682,7 @@ public void setXCoordinate(int x) {
 
     \begin{exampleblock}{\texttt{main}}
         \begin{lstlisting}[language=Java]
-public static void main(String argv[]) {
+public static void main(String args[]) {
     // do something...
 }
         \end{lstlisting}
@@ -582,8 +692,8 @@ public static void main(String argv[]) {
 
 \end{frame}
 
-\begin{frame}[fragile]{argv[]}
-    \texttt{argv[]} enthält die Parameter, welche in der Kommandozeile an das Programm übergeben werden.
+\begin{frame}[fragile]{args[]}
+    \texttt{args[]} enthält die Parameter, welche in der Kommandozeile an das Programm übergeben werden.
     \pause
     \begin{exampleblock}{Kommandozeile}
         \begin{lstlisting}
@@ -593,17 +703,17 @@ public static void main(String argv[]) {
 
 \end{frame}
 
-\begin{frame}[fragile]{argv[]}
+\begin{frame}[fragile]{args[]}
 
     \begin{exampleblock}{Im Programm}
         \begin{lstlisting}[language=Java]
 public class MyProgram {
 
-    public static void main(String argv[]) {
-        System.out.println("argv[0] ist " + argv[0]);
-        System.out.println("argv[1] ist " + argv[1]);
-        System.out.println("argv[2] ist " + argv[2]);
-        System.out.println("argv[3] ist " + argv[3]);
+    public static void main(String args[]) {
+        System.out.println("args[0] ist " + args[0]);
+        System.out.println("args[1] ist " + args[1]);
+        System.out.println("args[2] ist " + args[2]);
+        System.out.println("args[3] ist " + args[3]);
     }
 
 }
@@ -612,14 +722,14 @@ public class MyProgram {
 
 \end{frame}
 
-\begin{frame}[fragile]{argv[]}
+\begin{frame}[fragile]{args[]}
 
     \begin{exampleblock}{Ausgabe}
         \begin{lstlisting}
-argv[0] ist 42
-argv[1] ist -v
-argv[2] ist 9000
-argv[3] ist foo
+args[0] ist 42
+args[1] ist -v
+args[2] ist 9000
+args[3] ist foo
         \end{lstlisting}
     \end{exampleblock}
 
