@@ -653,8 +653,8 @@ secondResult = 42
 
     \begin{exampleblock}{Beispiel}
         \begin{lstlisting}[language=Java]
-private double convertToFahrenheit(double celsius) {
-    return (celsius * 9.0) / 5.0 + 32.0;
+private void accelerate(int a) {
+    this.velocity *= a;
 }
         \end{lstlisting}
     \end{exampleblock}
@@ -664,13 +664,111 @@ private double convertToFahrenheit(double celsius) {
     \textit{Mehr dazu kommt im Kapitel zur \textbf{Sichtbarkeit} (scope)} !
 \end{frame}
 
+\begin{frame}{Getter und Setter}
+    \begin{block}{Getter}
+        Als \textit{Getter} bezeichnet man eine Methode zur \textbf{Abfrage} von Attributen.
+    \end{block}
 
-\begin{frame}{Überladen von Methoden}
-    body
+    \begin{block}{Setter}
+        Als \textit{Setter} bezeichnet man eine Methode zum \textbf{Setzen} von Attributen.
+    \end{block}
+
 \end{frame}
 
-\begin{frame}{Statische Methoden}
-    body
+\begin{frame}[fragile]{Getter und Setter}
+    \begin{exampleblock}{Getter}
+        \begin{lstlisting}[language=Java]
+public double getTemperature() {
+    return this.temperature;
+}
+        \end{lstlisting}
+
+
+    \end{exampleblock}
+
+    \begin{exampleblock}{Setter}
+        \begin{lstlisting}[language=Java]
+public void setTemperature(double temperature) {
+    this.temperature = temperature;
+}
+        \end{lstlisting}
+
+
+    \end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}{Überladen von Methoden}
+    \textbf{Überladen von Methoden} bedeutet, dass derselbe Methodenname mehrfach in einer Klasse verwendet werden kann.
+    \begin{itemize}
+        \item Gleicher \textbf{Methodenname}
+        \item Unterscheidbar durch Typ oder Anzahl der Parameter
+    \end{itemize}
+
+    \pause
+    \vspace{.5in}
+    \textit{Gleiches Prinzip wie vorhin bei mehreren Konstruktoren !}
+\end{frame}
+
+\begin{frame}[fragile]{Überladen von Methoden}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+private int convertToFahrenheit(int celsius) {
+    return (celsius * 9) / 5 + 32;
+}
+
+private double convertToFahrenheit(double celsius) {
+    return (celsius * 9.0) / 5.0 + 32.0;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Statische Methoden}
+    \textbf{Statische Methoden} oder \textbf{Klassen-Methoden} sind Methoden, die unabhängig vom Zustand eines Objekts sind.
+    \begin{itemize}
+        \item Schlüsselwort \texttt{static}
+        \item Kein Zugriff auf Attribute oder Methoden
+        \item Kein \texttt{this}
+        \item Aufruf über \textbf{Klassennamen}: \texttt{WeatherStation.convertToFahrenheit(8.0)}
+    \end{itemize}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class WeatherStation {
+
+    public static double convertToFahrenheit(double celsius) {
+        return (celsius * 9.0) / 5.0 + 32.0;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Statische Attribute}
+    \textbf{Statische Attribute} oder \textbf{Klassen-Attribute} sind Attribute, die unabhänging vom Zustand eines Objekts sind.
+    \begin{itemize}
+        \item Schlüsselwort \texttt{static}
+        \item Zugriff über \textbf{Klassennamen}: \texttt{WeatherStation.convertToFahrenheit(8.0)}
+        \item Gleiches Prinzip wie \textit{statische Methoden}
+    \end{itemize}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+public class WeatherStation {
+    public static int stationCounter = 0;
+    public WeatherStation() {
+        // ...
+        stationCounter++;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]{Main}
@@ -735,13 +833,27 @@ args[3] ist foo
 
 \end{frame}
 
+\begin{frame}[fragile]{Standard Ein- und Ausgabe}
+    Java hat verschiedene Methoden zur Ein- und Ausgabe:
+    \begin{block}{}
+        \begin{itemize}
+            \item \texttt{void System.out.println(String);}
+            \item \texttt{int Integer.parseInt(String);}
+            \item \texttt{double Double.parseDouble(String);}
+            \item \dots
+        \end{itemize}
+    \end{block}
 
-\begin{frame}{Statische Attribute}
-    body
-\end{frame}
+    \begin{exampleblock}{Beispiel}
+        \begin{lstlisting}[language=Java]
+double x, y, z;
+x = Double.parseDouble(args[0]);
+y = Double.parseDouble(args[1]);
+z = x + y;
+System.out.println(z);
+        \end{lstlisting}
+    \end{exampleblock}
 
-\begin{frame}{Standard Ein- und Ausgabe}
-    body
 \end{frame}
 
 \appendix
