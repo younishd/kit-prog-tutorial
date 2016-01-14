@@ -198,11 +198,11 @@ int factorial(int n) {
     \end{itemize}
     \begin{exampleblock}{}
         $
-        \mathscr{A}(m, n) =
+        \mathscr{A}(m, n) :=
         \begin{cases}
-            n+1 & \text{if\qquad} m = 0\\
-            \mathscr{A}(m-1, 1) & \text{if\qquad} m > 0 \text{\,and\,} n = 0\\
-            \mathscr{A}(m-1, \mathscr{A}(m, n-1)) & \text{if\qquad} m > 0 \text{\,and\,} n > 0
+            n+1 & \text{if\quad} m = 0\\
+            \mathscr{A}(m-1, 1) & \text{if\quad} m > 0 \text{\,and\,} n = 0\\
+            \mathscr{A}(m-1, \mathscr{A}(m, n-1)) & \text{if\quad} m > 0 \text{\,and\,} n > 0
         \end{cases}
         $
     \end{exampleblock}
@@ -213,7 +213,7 @@ int factorial(int n) {
 \subsubsection{Iteration vs. Rekursion}
 
 \begin{frame}[fragile]{Iteration vs. Rekursion}
-    Alternativ\dots
+    Alternativ zur rekursiven Variante von \texttt{factorial()}\dots
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
 int factorial(int n) {
@@ -228,8 +228,7 @@ int factorial(int n) {
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}{Rekursion}
-    \textbf{Zusammenfassung}
+\begin{frame}{Zusammenfassung}
     \begin{itemize}
         \item \textbf{Rekursion} kann speicheraufwendig werden, da jedes Mal eine neue Instanz der Methode aufgerufen wird.
         \begin{itemize}
@@ -244,9 +243,94 @@ int factorial(int n) {
 
 \section{Java API}
 
+\begin{frame}{Java API}
+    \begin{itemize}
+        \item Die \textbf{Java API} ist eine Sammlung von Klassen/Paketen für häufig benötigte Funktionalitäten.
+        \vspace{.3in}
+        \item Wichtige Pakete:
+
+    \begin{itemize}
+        \item \texttt{java.lang}: Basisfunktionalität
+        \item \texttt{java.util}: Java Collections Framework
+        \item \texttt{java.io}: Ein- und Ausgabe
+    \end{itemize}
+
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Java Collections Framework}
+    \begin{figure}
+        \includegraphics[scale=.28]{img/javacollectionsframework.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Read the fine manual}
+    \Large{\url{https://docs.oracle.com/javase/8/docs/api}}
+\end{frame}
+
 
 
 \section{Testen}
+
+\begin{frame}{Testen}
+    \textsc{\LARGE{Murphy's law}}\\
+    \textsc{Anything that can go wrong will go wrong.}
+\end{frame}
+
+\section{Testen}
+
+\begin{frame}{Testen}
+    \textsc{\LARGE{Corollary}}\\
+    \textsc{If there is a possibility of several things going wrong, the one that will cause the most damage will be the one to go wrong.}
+\end{frame}
+
+\begin{frame}{Testen}
+    \textit{Was habe ich überhaupt davon ?}
+    \begin{itemize}
+        \item Testen ermöglicht es, Software-Fehler zu finden um diese dann zu korrigieren !
+        \item Dabei versucht man möglichst viele verschiedene Situationen abzudecken, in denen etwas schieflaufen kann.
+        \begin{itemize}
+            \item e.g., viele unterschiedliche Benutzereingaben\dots
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Testen}
+    \textit{Wann habe ich mein Programm genug getestet ?}
+    \pause
+    \begin{itemize}
+        \item Nie.
+        \pause
+        \item Die sinnvollere Frage lautet: \quotes{\textbf{Wie sehen gute Testfälle aus ?}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Testen}
+    \textit{Wie sehen gute Testfälle aus ?}
+    \pause
+    \begin{itemize}
+        \item Typische Vorgehensweise:
+        \begin{enumerate}
+            \item Klassifizierung der möglichen Eingabedaten (Standardsituationen und Randfälle betrachten)
+            \item Auswahl der repräsentativen Daten zu jedem Testfall
+        \end{enumerate}
+
+        \item Prüfen genau eine spezifische Eigenschaft ab.
+        \item Kurz und knapp.
+        \item Können isoliert ausgeführt werden.
+        \item Orientieren sich an der Spezifikation (i.e., Aufgabenstellung)
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Testen}
+    \Large{\quotes{Testing shows the presence, not the absence of bugs.}}\\
+    \vspace{.4in}
+    \textit{- Dijkstra}
+\end{frame}
+
+
 
 \begin{frame}{Fragen ?}
     \begin{figure}
