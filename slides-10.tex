@@ -187,11 +187,10 @@ int linearSearch(int needle, int[] haystack) {
 \end{frame}
 
 \begin{frame}{Lösung}
-    \begin{block}{}
-        $log_2(256) = log_2(2^8) = 8$
-    \end{block}
+    \Large{\textbf{8}}\\
     \pause
     \vspace{.4in}
+    \large
     \textit{\dots Aber warum ?}
 \end{frame}
 
@@ -225,41 +224,41 @@ int binarySearch(int needle, int[] haystack, int from, int to) {
 \end{frame}
 
 \begin{frame}{Binäre Suche: Beispiel}
-    Suche: \textbf{\alert{8}}
+    Suche: \textbf{\alert{9}}
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{lightgreen}{3} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{8} & \cellcolor{lightgreen}{10} & \cellcolor{lightgreen}{11} & \cellcolor{lightgreen}{14} & \cellcolor{lightgreen}{17} & \cellcolor{lightgreen}{22} & \cellcolor{lightgreen}{24} & \cellcolor{lightgreen}{29} & \cellcolor{lightgreen}{32} & \cellcolor{lightgreen}{42} \\
+            \cellcolor{lightgreen}{3} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{9} & \cellcolor{lightgreen}{10} & \cellcolor{lightgreen}{11} & \cellcolor{lightgreen}{14} & \cellcolor{lightgreen}{17} & \cellcolor{lightgreen}{22} & \cellcolor{lightgreen}{24} & \cellcolor{lightgreen}{29} & \cellcolor{lightgreen}{32} & \cellcolor{lightgreen}{42} \\
             \hline
         \end{tabular}
         \pause
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{lightgreen}{3} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{8} & \cellcolor{lightgreen}{10} & \cellcolor{lime}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
+            \cellcolor{lightgreen}{3} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{4} & \cellcolor{lightgreen}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{9} & \cellcolor{lightgreen}{10} & \cellcolor{lime}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
             \hline
         \end{tabular}
         \pause
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{lime}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{8} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
+            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{lime}{5} & \cellcolor{lightgreen}{6} & \cellcolor{lightgreen}{7} & \cellcolor{lightgreen}{9} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
             \hline
         \end{tabular}
         \pause
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{lime}{7} & \cellcolor{lightgreen}{8} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
+            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{lime}{7} & \cellcolor{lightgreen}{9} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
             \hline
         \end{tabular}
         \pause
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{darkgrey}{7} & \cellcolor{lime}{8} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
+            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{darkgrey}{7} & \cellcolor{lime}{9} & \cellcolor{lightgreen}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
             \hline
         \end{tabular}
         \pause
         \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
             \hline
-            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{darkgrey}{7} & \cellcolor{awesome}{8} & \cellcolor{darkgrey}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
+            \cellcolor{darkgrey}{3} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{4} & \cellcolor{darkgrey}{5} & \cellcolor{darkgrey}{6} & \cellcolor{darkgrey}{7} & \cellcolor{awesome}{9} & \cellcolor{darkgrey}{10} & \cellcolor{darkgrey}{11} & \cellcolor{darkgrey}{14} & \cellcolor{darkgrey}{17} & \cellcolor{darkgrey}{22} & \cellcolor{darkgrey}{24} & \cellcolor{darkgrey}{29} & \cellcolor{darkgrey}{32} & \cellcolor{darkgrey}{42} \\
             \hline
         \end{tabular}
     \end{center}
@@ -326,23 +325,97 @@ void bubbleSort(int[] list) {
     \end{exampleblock}
 \end{frame}
 
+\begin{frame}{Bubble Sort}
+    \begin{itemize}
+        \item Laufzeit: $\mathcal{O}(n^2)$
+        \item Sehr naiver Algorithmus, allerdings gut, wenn die Liste quasi schon sortiert ist.
+    \end{itemize}
+\end{frame}
+
 \subsection{Selection Sort}
 
 \begin{frame}{Selection Sort}
-    body
+    \begin{itemize}
+        \item Ansatz: Suche immer das kleinste Element der unsortierten Liste und füge es an den Rand der sortierten Liste ein.
+    \end{itemize}
+    \vspace{.1in}
+    \begin{figure}
+        \includegraphics[scale=2.6]{img/SelectionSort.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Selection Sort: Java-Code}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+void selectionSort(int[] list) {
+    int min, swap;
+    for (int i = 1; i < list.length; i++) {
+        min = i - 1;
+        for (int j = i; j < list.length; j++) {
+            if (list[j] < list[min]) {
+                min = j;
+            }
+        }
+        if (min != i - 1) {
+            swap = list[i - 1];
+            list[i - 1] = list[min];
+            list[min] = swap;
+        }
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Selection Sort}
+    \begin{itemize}
+        \item Laufzeit: $\mathcal{O}(n^2)$
+        \item Braucht \textit{immer} $\frac{n(n-1)}{2}$ Vergleiche !
+    \end{itemize}
 \end{frame}
 
 \subsection{Insertion Sort}
 
 \begin{frame}{Insertion Sort}
-    body
+    \begin{itemize}
+        \item Ansatz: Füge jedes Element der unsortierten Liste an die passende Stelle innerhalb der sortierten Liste.
+    \end{itemize}
+    \vspace{.1in}
+    \begin{figure}
+        \includegraphics[scale=0.8]{img/InsertionSort.jpg}
+    \end{figure}
 \end{frame}
 
-\subsection{Merge Sort}
-
-\begin{frame}{Merge Sort}
-    body
+\begin{frame}[fragile]{Insertion Sort: Java-Code}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+void insertionSort(int[] list) {
+    int j, current;
+    for (int i = 1; i < list.length; i++) {
+        current = list[i];
+        j = i - 1;
+        while (j >= 0 && list[j] > current) {
+            list[j + 1] = list[j--];
+        }
+        list[j + 1] = current;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
+
+\begin{frame}{Insertion Sort}
+    \begin{itemize}
+        \item Laufzeit: $\mathcal{O}(n^2)$
+        \item Das Vorgehen ist mit der Sortierung eines Spielkartenblatts vergleichbar.
+    \end{itemize}
+\end{frame}
+
+% \subsection{Merge Sort}
+%
+% \begin{frame}{Merge Sort}
+%
+% \end{frame}
 
 \section{Parsen}
 
@@ -352,25 +425,732 @@ void bubbleSort(int[] list) {
 \end{frame}
 
 \begin{frame}{Parsen}
-    body
+    \begin{block}{}
+        \textbf{Problem:}\\
+        \textit{\quotes{Wie kann eine Zeichenkette in semantisch sinnvolle Teile\\ zerlegt werden ?}}
+    \end{block}
+    \vspace{.2in}
+    \begin{figure}
+        \includegraphics[scale=.1]{img/syntax-tree-basics.png}
+    \end{figure}
 \end{frame}
 
 \subsection{Formale Grammatiken}
 
-\begin{frame}{Formale Grammatiken}
-    body
+\begin{frame}{Crashkurs: Formale Grammatiken}
+    \textit{Ganz formal\dots}
+    \begin{block}{Definition}
+        Eine Grammatik ist ein 4-Tupel $\mathcal{G} = (\mathcal{V}, \Sigma, \mathcal{P}, \mathcal{S})$ bestehend aus:
+        \begin{itemize}
+            \item $\mathcal{V}$, endliche Menge von \textbf{Variablen}
+            \item $\Sigma$, endliche Menge von \textbf{Terminalsymbolen} (mit $\Sigma \cap \mathcal{V} = \emptyset$)
+            \item $\mathcal{P} \subset (V \cup \Sigma)^+ \times (V \cup \Sigma)^*$, endliche Menge von \textbf{Produktionsregeln}
+            \item $\mathcal{S} \in \mathcal{V}$, \textbf{Startsymbol}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Crashkurs: Formale Grammatiken}
+    \textit{Jetzt ein konkretes Beispiel für eine Grammatik\dots}
+    \begin{block}{Klammerausdruck}
+        \begin{itemize}
+            \item $\mathcal{G} = (\mathcal{V} = \{\alert{X}, \alert{Y}\}, \quad \Sigma = \{\alert{(}, \alert{)}, \alert{\mathit{expr}}\}, \quad \mathcal{P}, \quad \mathcal{S} = \alert{X})$
+            \item $\mathcal{P} = \{$\\
+            $\quad X \longrightarrow (X)$\\
+            $\quad X \longrightarrow XX$\\
+            $\quad X \longrightarrow Y$\\
+            $\quad Y \longrightarrow \mathit{expr}$\\
+            $\}$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Crashkurs: Formale Grammatiken}
+    \begin{itemize}
+        \item \textit{Dann sind folgende Wörter gültige Klammerausdrücke:}
+        \begin{itemize}
+            \item \texttt{expr}
+            \item \texttt{(expr)}
+            \item \texttt{(expr)(exprexpr)}
+            \item \texttt{expr(expr(expr)(expr(expr)))expr((expr)expr)}
+            \item \dots
+        \end{itemize}
+        \item \textit{Aber nicht sowas:}
+        \begin{itemize}
+            \item \texttt{)(}
+            \item \texttt{expr()}
+            \item \texttt{)(expr)}
+            \item \texttt{term}
+            \item \dots
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \subsection{Top-down Parsing}
 
 \begin{frame}{Top-down Parsing}
-    body
+    Idee:\\
+    \begin{itemize}
+        \item Verwende eine \textbf{formale Grammatik} um die gewünschte Sprache zu beschreiben.
+        \item Spalte die Eingabe in einzelne \textbf{Symbole} oder \textbf{Tokens}.
+        \item Ausgehend vom \textbf{Anfangssymbol} bestimme die nächste anzuwendende Produktion.
+    \end{itemize}
 \end{frame}
 
 \subsubsection{LL(1)-Parser}
 
 \begin{frame}{LL(1)-Parser}
-    body
+    \begin{itemize}
+        \item Ein \textbf{LL(1)-Parser} ist ein einfacher \textbf{Top-down-Parser}.
+        \item Betrachte immer nur \textit{ein einziges Zeichen} (ganz links) um die nächste Regel zu entscheiden.
+        \item Grammatik darf dementsprechend \textbf{keine Konflikte bzgl. des ganz linken Symbols} haben (sonst siehe \quotes{Links-Faktorisierung}),
+        da sonst mehrere Produktionen in Frage kommen und der Parser nicht mehr entscheiden kann, welche davon als nächstes angewandt werden soll.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \textit{Ein konkretes Beispiel\dots}
+    \begin{exampleblock}{LL(1)-Grammatik}
+        \begin{itemize}
+            \item $\mathcal{G} = (\mathcal{V} = \{\alert{X}, \alert{Y}\}, \quad \Sigma = \{\alert{(}, \alert{)}, \alert{+}, \alert{\mathit{a}}\}, \quad \mathcal{P}, \quad \mathcal{S} = \alert{X})$
+            \item $\mathcal{P} = \{$\\
+            $\quad X \longrightarrow Y$\\
+            $\quad X \longrightarrow (X+Y)$\\
+            $\quad Y \longrightarrow \mathit{a}$\\
+            $\}$
+        \end{itemize}
+    \end{exampleblock}
+    \vspace{.2in}
+    \textbf{Eingabe:}\\
+    \vspace{.1in}
+    \texttt{((a+a)+a)}\\
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{((a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            X
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{(}(a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                \alert{$\quad X \longrightarrow (X+Y)$}\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            \alert{X}
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{((a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $($ \\
+            X \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{(}(a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $\alert{(}$ \\
+            X \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{(a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            X \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{(}a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                \alert{$\quad X \longrightarrow (X+Y)$}\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{X} \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{(a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $($ \\
+            X \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{(}a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $\alert{(}$ \\
+            X \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{a+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            X \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a}+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                \alert{$\quad X \longrightarrow Y$}\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{X} \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a}+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                \alert{$\quad Y \longrightarrow \mathit{a}$}\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{Y} \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a}+a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{a} \\
+            + \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{+}a)+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{+} \\
+            Y \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a})+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                \alert{$\quad Y \longrightarrow \mathit{a}$}\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{Y} \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a})+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{a} \\
+            $)$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{)}+a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $\alert{)}$ \\
+            + \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{+}a)}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{+} \\
+            Y \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a})}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                \alert{$\quad Y \longrightarrow \mathit{a}$}\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{Y} \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{a})}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            \alert{a} \\
+            $)$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            \texttt{\alert{)}}\\
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $
+            \begin{array}{c}
+            $\alert{)}$
+            \end{array}
+            $
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{LL(1)-Parser: Beispiel}
+    \begin{columns}[c]
+        \column{.6\textwidth}
+        \begin{itemize}
+            \item Eingabe:\\
+            \vspace{.1in}
+            $\emptyset$
+            \vspace{.2in}
+            \item Produktionen:\\
+            \vspace{.1in}
+                $\quad X \longrightarrow Y$\\
+                $\quad X \longrightarrow (X+Y)$\\
+                $\quad Y \longrightarrow \mathit{a}$\\
+        \end{itemize}
+        \column{.4\textwidth}
+        \begin{itemize}
+            \item Symbol-Stack:\\
+            \vspace{.1in}
+            $\emptyset$
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
 \appendix
