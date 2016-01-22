@@ -210,9 +210,9 @@ int binarySearch(int needle, int[] haystack, int from, int to) {
     if (to > from) {
         int mid = (from + to) / 2;
         if (needle < haystack[mid]) {
-            return search(needle, haystack, from, mid - 1);
+            return binarySearch(needle, haystack, from, mid - 1);
         } else if (needle > haystack[mid]) {
-            return search(needle, haystack, mid + 1, to);
+            return binarySearch(needle, haystack, mid + 1, to);
         } else {
             return mid;
         }
