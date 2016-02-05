@@ -310,15 +310,20 @@ int binarySearch(int needle, int[] haystack, int from, int to) {
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
 void bubbleSort(int[] list) {
+    int n = list.length;
     int swap;
-    for (int i = 1; i < list.length; i++) {
-        for (int j = i; j > 0; j--) {
-            if (list[j] < list[j - 1]) {
-                swap = list[j];
-                list[j] = list[j - 1];
-                list[j - 1] = swap;
+    boolean swapped = true;
+    while (swapped) {
+        swapped = false;
+        for (int i = 1; i < n; i++) {
+            if (list[i] < list[i-1]) {
+                swap = list[i];
+                list[i] = list[i - 1];
+                list[i - 1] = swap;
+                swapped = true;
             }
         }
+        n--;
     }
 }
         \end{lstlisting}
