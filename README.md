@@ -5,7 +5,7 @@ Slides for my Java programming tutorial at [KIT](https://kit.edu) using LaTeX be
 ## Build
 
 ```bash
-cd wise1516
+cd wise1617 # or wise1516
 for i in *.tex; do pdflatex -output-directory=out $i; done
 ```
 
