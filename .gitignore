@@ -1,8 +1,5 @@
 .directory
-
-/out/
-/snippets/
-
+out/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
