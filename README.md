@@ -1,11 +1,12 @@
-# prog-folien
+# kit-prog-tutorial
 
-Slides for my Java programming tutorial using LaTeX beamer.
+Slides for my Java programming tutorial at [KIT](https://kit.edu) using LaTeX [beamer](ftp://ftp.mpi-sb.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/beamer/doc/beameruserguide.pdf).
 
-## Build everything
+## Build
 
 ```bash
-for i in slides-*.tex; do pdflatex -output-directory=out $i; done
+cd wise1516
+for i in *.tex; do pdflatex -output-directory=out $i; done
 ```
 
 ## License
