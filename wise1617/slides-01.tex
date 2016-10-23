@@ -9,18 +9,6 @@
 %% For the full copyright and license information, please view the LICENSE file.
 %%
 
-%% LaTeX-Beamer template for KIT design
-%% by Erik Burger, Christian Hammer
-%% title picture by Klaus Krogmann
-%%
-%% version 2.1
-%%
-%% mostly compatible to KIT corporate design v2.0
-%% http://intranet.kit.edu/gestaltungsrichtlinien.php
-%%
-%% Problems, bugs and comments to
-%% burger@kit.edu
-
 \documentclass[18pt]{beamer}
 
 \usepackage{templates/beamerthemekit}
@@ -29,12 +17,24 @@
 \usepackage{hyperref}
 \usepackage{listings}
 
-\titleimage{fall}
+%\titleimage{bauplan}
+%\titleimage{greendrop}
+%\titleimage{bluedrop}
+%\titleimage{pinkdrop}
+%\titleimage{fall}
+%\titleimage{forestleaves}
+%\titleimage{coloredtrees}
+\titleimage{road}
+%\titleimage{sortedleaves}
+%\titleimage{topviewtrees}
 
-\title[Hello World]{Programmieren:\\ Hello World}
-\subtitle{Tutorium 32}
+\newcommand{\tagline}{Hello World}
+
+\title[Programmieren\hspace{2.5pt}--\hspace{2.5pt}\tagline]{\tagline}
+\subtitle{Programmieren~\textbar~Tutorium 32}
+
 \author{YouniS Bensalah}
-\date{October 24, 2016}
+\date{24. Oktober 2016}
 
 \institute{Chair for Software Design and Quality}
 
@@ -44,12 +44,24 @@
 
 \begin{document}
 
-\selectlanguage{english}
+\selectlanguage{ngerman}
 
 \begin{frame}
 \titlepage
 \end{frame}
 
+\begin{frame}
+Hello
+\end{frame}
 
+\appendix
+
+\beginbackup
+
+\begin{frame}
+Hello
+\end{frame}
+
+\backupend
 
 \end{document}
