@@ -1,0 +1,424 @@
+%%
+%% kit-prog-tutorial
+%%
+%% Slides for my Java programming tutorial at KIT using LaTeX beamer.
+%%
+%% Copyright (c) 2015-2016 YouniS Bensalah <younis.bensalah@gmail.com>
+%%
+%% This work is released to the public domain.
+%% For the full copyright and license information, please view the LICENSE file.
+%%
+
+\documentclass[18pt]{beamer}
+
+\usepackage{templates/beamerthemekit}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\titleimage{road}
+
+\newcommand{\tagline}{Taking Control of your Program}
+\newcommand{\quotes}[1]{``#1''}
+
+\title[Programmieren\hspace{2.5pt}--\hspace{2.5pt}\tagline]{\tagline}
+\subtitle{Programmieren~\textbar~Tutorium 32}
+
+\author{YouniS Bensalah}
+\date{14. November 2016}
+
+\institute{Chair for Software Design and Quality}
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% remove annoying figure prefix in caption
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\selectlanguage{english}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% \begin{frame}{Heute}
+%     \tableofcontents
+% \end{frame}
+
+\section{Wiederholung}
+
+\begin{frame}{Wiederholung: OOP}
+    Was waren nochmal\dots
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textbf{Klassen} und \textbf{Objekte}
+        \pause
+        \item \textbf{Methoden} und \textbf{Attribute}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wiederholung: Datentypen}
+    Was waren nochmal\dots
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textbf{primitive Datentypen} (Beispiel?)
+        \pause
+        \item \textbf{Klassen als Datentypen} (Beispiel?)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wiederholung: Operatoren}
+    Was war nochmal der Unterschied zwischen\dots
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textbf{Preinkrement} (\texttt{++number}) und \textbf{Postinkrement} (\texttt{number++})
+        \pause
+        \item dem \textbf{logischen AND} (\texttt{\&\&}) und dem \textbf{bitweisen AND} (\texttt{\&})
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wiederholung: Variablen}
+    Was war nochmal der Unterschied zwischen\dots
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textbf{lokalen Variablen} und \textbf{Attributen}
+        \pause
+        \item \textbf{Deklaration} und \textbf{Zuweisung}
+    \end{itemize}
+\end{frame}
+
+\section{Kontrollfluss}
+
+\begin{frame}{Kontrollstrukturen}
+    \begin{figure}
+        \includegraphics[scale=.12]{img/StockSnap_GGK9HVUMUQ_.jpg}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}{Kontrollstrukturen}
+    \begin{itemize}
+        \item Kontrollstrukturen steuern Ablauf eines Computerprogramms
+        \pause
+        \item Ohne Kontrollstrukturen tut jedes Programm immer das gleiche
+        \pause
+        \item Das wäre sehr langweilig
+        \pause
+        \item Deswegen gibt es
+        \begin{enumerate}
+            \item Verzweigungen
+            \item Schleifen
+            \item Unbedingte Sprünge
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\subsection{Verzweigungen}
+
+\begin{frame}[fragile]{Verzweigungen: if-then}
+    \begin{block}{}
+        \textbf{Falls} \textit{Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\dots
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+if (condition) {
+    instruction;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: if-then}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+if (temperature < 20) {
+    turnRadiatorOn();
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: if-then-else}
+    \begin{block}{}
+        \textbf{Falls} \textit{Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
+        \textbf{sonst} \textit{Anweisungen ausführen} \dots
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+if (condition) {
+    instruction1;
+} else {
+    instruction2;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: if-then-else}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+if (weekday == Day.MONDAY) {
+    work();
+} else {
+    sleep();
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: if-then-elseif-else}
+    \begin{block}{}
+        \textbf{Falls} \textit{1. Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
+        \textbf{sonst falls} \textit{2. Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
+        \textbf{sonst} \textit{Anweisungen ausführen}\dots
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+if (condition1) {
+    instruction1;
+} else if (condition2) {
+    instruction2;
+} else {
+    instruction3;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: if-then-elseif-else}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+if () {
+
+} else if () {
+
+} else {
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: switch}
+    \begin{block}{}
+        \textbf{Falls} \textit{Ausdruck gleich 1. Konstante} \textbf{dann} \textit{Anweisungen ausführen}\\
+        \textbf{sonst falls} \textit{Ausdruck gleich 2. Konstante} \textbf{dann} \textit{Anweisungen ausführen}\\
+        \textbf{sonst} \textit{Anweisungen ausführen}\dots
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+switch (expression) {
+    case constant1:
+        instruction1;
+        break;
+    case constant2:
+        instruction2;
+        break;
+    default:
+        instruction3;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Verzweigungen: switch}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+switch (color) {
+    case RED:
+        System.out.println("That's a warm color!");
+        break;
+    case BLUE:
+        System.out.println("That's a cool color!");
+        break;
+    default:
+        System.out.println("That's a boring color.");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Switch und Enum}
+    bla
+\end{frame}
+
+
+\subsection{Schleifen}
+
+\begin{frame}[fragile]{Schleifen: while}
+    \begin{block}{}
+
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: while}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: do-while}
+    \begin{block}{}
+
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: do-while}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: for}
+    \begin{itemize}
+        \item Verwende for-Schleife um zu zählen
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: for}
+    \begin{block}{}
+        \textbf{Für} \textit{Zählvariable} \textbf{von} \textit{untere Grenze} \textbf{bis} \textit{obere Grenze}\\
+        \textit{Anweisungen ausführen}\dots
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+for (int i = 0; i < limit; ++i) {
+    instruction;
+}
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Schleifen: for}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Schleifen}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: break}
+    \begin{block}{}
+
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: break}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: continue}
+    \begin{block}{}
+
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: continue}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: return}
+    \begin{block}{}
+
+    \end{block}
+    \pause
+
+    \begin{block}{}
+        \begin{lstlisting}[language=Java]
+
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Unbedingte Sprünge: return}
+    \begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+
+    \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\appendix
+
+\beginbackup
+
+\begin{frame}{Kommentare in Java}
+    body
+\end{frame}
+
+\begin{frame}{Javadoc}
+    body
+\end{frame}
+
+\begin{frame}{Fragen?}
+    \begin{figure}
+        \includegraphics[scale=.3]{img/Question-Rage-Face.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Bis nächste Woche!}
+    \begin{figure}
+        \includegraphics[scale=2.8]{img/dt161113.jpg}
+        \caption{\footnotesize{dilbert.com}}
+    \end{figure}
+\end{frame}
+
+\backupend
+
+\end{document}
