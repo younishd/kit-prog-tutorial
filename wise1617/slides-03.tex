@@ -106,8 +106,9 @@
         \pause
         \item Ohne Kontrollstrukturen tut jedes Programm immer das gleiche
         \pause
-        \item Das wäre sehr langweilig
+        \item Das wäre sehr langweilig\dots
         \pause
+        \vspace{.2in}
         \item Deswegen gibt es
         \begin{enumerate}
             \item Verzweigungen
@@ -146,8 +147,8 @@ if (temperature < 20) {
 
 \begin{frame}[fragile]{Verzweigungen: if-then-else}
     \begin{block}{}
-        \textbf{Falls} \textit{Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
-        \textbf{sonst} \textit{Anweisungen ausführen} \dots
+        \textbf{Falls} \textit{Bedingung erfüllt} \textbf{dann} \textit{Anweisungen (1) ausführen}\\
+        \textbf{sonst} \textit{Anweisungen (2) ausführen} \dots
     \end{block}
     \pause
 
@@ -176,9 +177,9 @@ if (weekday == Day.MONDAY) {
 
 \begin{frame}[fragile]{Verzweigungen: if-then-elseif-else}
     \begin{block}{}
-        \textbf{Falls} \textit{1. Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
-        \textbf{sonst falls} \textit{2. Bedingung erfüllt} \textbf{dann} \textit{Anweisungen ausführen}\\
-        \textbf{sonst} \textit{Anweisungen ausführen}\dots
+        \textbf{Falls} \textit{Bedingung (1) erfüllt} \textbf{dann} \textit{Anweisungen (1) ausführen}\\
+        \textbf{sonst falls} \textit{Bedingung (2) erfüllt} \textbf{dann} \textit{Anweisungen (2) ausführen}\\
+        \textbf{sonst} \textit{Anweisungen (3) ausführen}\dots
     \end{block}
     \pause
 
@@ -198,12 +199,12 @@ if (condition1) {
 \begin{frame}[fragile]{Verzweigungen: if-then-elseif-else}
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java]
-if () {
-
-} else if () {
-
+if (number > 0) {
+    System.out.println("Number is positive.");
+} else if (number < 0) {
+    System.out.println("Number is negative.");
 } else {
-
+    System.out.println("Number is null.");
 }
         \end{lstlisting}
     \end{exampleblock}
@@ -211,9 +212,9 @@ if () {
 
 \begin{frame}[fragile]{Verzweigungen: switch}
     \begin{block}{}
-        \textbf{Falls} \textit{Ausdruck gleich 1. Konstante} \textbf{dann} \textit{Anweisungen ausführen}\\
-        \textbf{sonst falls} \textit{Ausdruck gleich 2. Konstante} \textbf{dann} \textit{Anweisungen ausführen}\\
-        \textbf{sonst} \textit{Anweisungen ausführen}\dots
+        \textbf{Falls} \textit{Ausdruck gleich Konstante (1)} \textbf{dann} \textit{Anweisungen (1) ausführen}\\
+        \textbf{sonst falls} \textit{Ausdruck gleich Konstante (2)} \textbf{dann} \textit{Anweisungen (2) ausführen}\\
+        \textbf{sonst} \textit{Anweisungen (3) ausführen}\dots
     \end{block}
     \pause
 
@@ -236,12 +237,35 @@ switch (expression) {
 \begin{frame}[fragile]{Verzweigungen: switch}
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java]
+switch (semester) {
+    case 1:
+        System.out.println("Hallo Ersti!");
+        break;
+    case 2:
+        System.out.println("Hallo Zweiti!");
+        break;
+    default:
+        System.out.println("Hallo Student!");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Switch und Enum}
+    \texttt{switch} und \texttt{enum} harmonieren sehr gut miteinander
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+enum Color { RED, GREEN, BLUE, YELLOW }
+
 switch (color) {
     case RED:
         System.out.println("That's a warm color!");
         break;
     case BLUE:
         System.out.println("That's a cool color!");
+        break;
+    case GREEN:
+        System.out.println("That's a creative color!");
         break;
     default:
         System.out.println("That's a boring color.");
@@ -250,22 +274,84 @@ switch (color) {
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Switch und Enum}
-    bla
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+String command = "offertea";
+
+switch (command) {
+    case "greet":
+        System.out.println("Good day, sir!");
+        break;
+    case "offertea":
+        System.out.println("Would you like a cup of tea, sir?");
+        break;
+    case "saygoodbye":
+        System.out.println("It was nice to meet you, sir!");
+        break;
+    default:
+        System.out.println("I'm afraid, I don't understand, sir!");
+}
+        \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
 
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+Would you like a cup of tea, sir?
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+String command = "greet";
+
+switch (command) {
+    case "greet":
+        System.out.println("Good day, sir!");
+    case "offertea":
+        System.out.println("Would you like a cup of tea, sir?");
+    case "saygoodbye":
+        System.out.println("It was nice to meet you, sir!");
+    default:
+        System.out.println("I'm afraid, I don't understand, sir!");
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+Good day, sir!
+Would you like a cup of tea, sir?
+It was nice to meet you, sir!
+I'm afraid, I don't understand, sir!
+        \end{lstlisting}
+    \end{block}
+    \vspace{.3in}
+    \alert{\textbf{Wir haben \texttt{break;} vergessen!}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Schleifen}
 
 \begin{frame}[fragile]{Schleifen: while}
     \begin{block}{}
-
+        \textbf{Solange} \textit{Bedingung erfüllt}\\
+        \textit{Anweisungen ausführen}\dots
     \end{block}
     \pause
 
     \begin{block}{}
         \begin{lstlisting}[language=Java]
-
+while (condition) {
+    instruction;
+}
         \end{lstlisting}
     \end{block}
 \end{frame}
@@ -273,20 +359,25 @@ switch (color) {
 \begin{frame}[fragile]{Schleifen: while}
     \begin{exampleblock}{}
     \begin{lstlisting}[language=Java]
-
+while (hungry) {
+    eat();
+}
     \end{lstlisting}
     \end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]{Schleifen: do-while}
     \begin{block}{}
-
+        \textit{Anweisungen ausführen}\dots\\
+        \textbf{solange} \textit{Bedingung erfüllt}
     \end{block}
     \pause
 
     \begin{block}{}
         \begin{lstlisting}[language=Java]
-
+do {
+    instruction;
+} while (condition);
         \end{lstlisting}
     \end{block}
 \end{frame}
@@ -294,15 +385,17 @@ switch (color) {
 \begin{frame}[fragile]{Schleifen: do-while}
     \begin{exampleblock}{}
     \begin{lstlisting}[language=Java]
-
+do {
+    drinkCoffee();
+} while (sleepy);
     \end{lstlisting}
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Schleifen: for}
-    \begin{itemize}
-        \item Verwende for-Schleife um zu zählen
-    \end{itemize}
+\begin{frame}{while vs. do-while}
+    \begin{figure}
+        \includegraphics{img/while_vs_dowhile.jpg}
+    \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Schleifen: for}
@@ -314,7 +407,7 @@ switch (color) {
 
     \begin{block}{}
         \begin{lstlisting}[language=Java]
-for (int i = 0; i < limit; ++i) {
+for (int i = from; i < to; ++i) {
     instruction;
 }
         \end{lstlisting}
@@ -324,91 +417,341 @@ for (int i = 0; i < limit; ++i) {
 \begin{frame}[fragile]{Schleifen: for}
     \begin{exampleblock}{}
     \begin{lstlisting}[language=Java]
-
+for (int i = 0; i < 4; ++i) {
+    System.out.println("Hallo aus for-Schleife!");
+}
     \end{lstlisting}
     \end{exampleblock}
 \end{frame}
-
-\subsection{Schleifen}
-
-\begin{frame}[fragile]{Unbedingte Sprünge: break}
-    \begin{block}{}
-
-    \end{block}
-    \pause
-
-    \begin{block}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
         \begin{lstlisting}[language=Java]
+int counter = 5;
+
+if (counter > 0) {
+    System.out.println(counter);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+5
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+int counter = 5;
+
+while (counter > 0) {
+    System.out.println(counter);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+5
+5
+5
+5
+5
+5
+5
+5
+...
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+int counter = 5;
+
+while (counter > 0) {
+    System.out.println(counter);
+    counter--;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+5
+4
+3
+2
+1
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+int counter = 5;
+
+while (--counter > 0) {
+    System.out.println(counter);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+4
+3
+2
+1
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+int counter = 5;
+
+while (counter-- > 0) {
+    System.out.println(counter);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+4
+3
+2
+1
+0
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+int counter = 5;
+
+while (counter > 7) {
+    System.out.println(counter);
+    counter--;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
 
         \end{lstlisting}
     \end{block}
 \end{frame}
-
-\begin{frame}[fragile]{Unbedingte Sprünge: break}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
     \begin{exampleblock}{}
-    \begin{lstlisting}[language=Java]
+        \begin{lstlisting}[language=Java]
+int counter = 5;
 
-    \end{lstlisting}
+do {
+    System.out.println(counter);
+    counter--;
+} while (counter > 7);
+        \end{lstlisting}
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Unbedingte Sprünge: continue}
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
     \begin{block}{}
-
-    \end{block}
-    \pause
-
-    \begin{block}{}
-        \begin{lstlisting}[language=Java]
-
+        \begin{lstlisting}
+5
         \end{lstlisting}
     \end{block}
 \end{frame}
-
-\begin{frame}[fragile]{Unbedingte Sprünge: continue}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
     \begin{exampleblock}{}
-    \begin{lstlisting}[language=Java]
-
-    \end{lstlisting}
+        \begin{lstlisting}[language=Java]
+for (int i = 0; i < 4; ++i) {
+    System.out.println("Hallo aus for-Schleife!");
+}
+        \end{lstlisting}
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Unbedingte Sprünge: return}
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
     \begin{block}{}
-
-    \end{block}
-    \pause
-
-    \begin{block}{}
-        \begin{lstlisting}[language=Java]
-
+        \begin{lstlisting}
+Hallo aus for-Schleife!
+Hallo aus for-Schleife!
+Hallo aus for-Schleife!
+Hallo aus for-Schleife!
         \end{lstlisting}
     \end{block}
 \end{frame}
-
-\begin{frame}[fragile]{Unbedingte Sprünge: return}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
     \begin{exampleblock}{}
-    \begin{lstlisting}[language=Java]
-
-    \end{lstlisting}
+        \begin{lstlisting}[language=Java]
+for (int i = 0; i < 4; ++i) {
+    System.out.println("Hallo " + i);
+}
+        \end{lstlisting}
     \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+Hallo 0
+Hallo 1
+Hallo 2
+Hallo 3
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+for (int i = 5; i > 0; --i) {
+    System.out.println("Hallo " + i);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+Hallo 5
+Hallo 4
+Hallo 3
+Hallo 2
+Hallo 1
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{while vs. for}
+    \begin{itemize}
+        \item Jede \texttt{for}-Schleife kann auch als \texttt{while}-Schleife umgeschrieben werden und andersrum
+        \pause
+        \pause
+        \vspace{.3in}
+        \item Typischerweise
+        \begin{itemize}
+            \item \texttt{for}-Schleife: hoch- bzw. runterzählen
+            \item \texttt{while}-Schleife: allgemeine Bedingung
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Unbedingte Sprünge}
+
+\begin{frame}[fragile]{Unbedingte Sprünge:\\ break und continue}
+    \begin{block}{}
+        \begin{itemize}
+            \item \texttt{break}: Verlasse Schleife
+            \item \texttt{continue}: Überspringe aktuellen Schleifendurchlauf
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+for (int i = 1; i < 100; ++i) {
+    if (i % 3 == 0 && i % 7 == 0) {
+        System.out.println(i);
+        break;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+21
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+for (int i = 1; i < 100; ++i) {
+    if (i % 3 == 0 && i % 7 == 0) {
+        System.out.println(i);
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+21
+42
+63
+84
+        \end{lstlisting}
+    \end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+for (int i = 1; i < 100; ++i) {
+    if (i % 2 != 0) {
+        continue;
+    }
+    if (i % 3 == 0 && i % 7 == 0) {
+        System.out.println(i);
+        break;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Quiz: Was kommt raus?}
+    \begin{block}{}
+        \begin{lstlisting}
+42
+        \end{lstlisting}
+    \end{block}
 \end{frame}
 
 \appendix
 
 \beginbackup
 
-\begin{frame}{Kommentare in Java}
-    body
-\end{frame}
-
-\begin{frame}{Javadoc}
-    body
-\end{frame}
-
 \begin{frame}{Fragen?}
     \begin{figure}
-        \includegraphics[scale=.3]{img/Question-Rage-Face.jpg}
+        \includegraphics[scale=.3]{img/fragen.jpg}
     \end{figure}
 \end{frame}
 
