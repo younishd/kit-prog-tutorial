@@ -1,0 +1,367 @@
+%%
+%% kit-prog-tutorial
+%%
+%% Slides for my Java programming tutorial at KIT using LaTeX beamer.
+%%
+%% Copyright (c) 2015-2016 YouniS Bensalah <younis.bensalah@gmail.com>
+%%
+%% This work is released to the public domain.
+%% For the full copyright and license information, please view the LICENSE file.
+%%
+
+\documentclass[18pt]{beamer}
+
+\usepackage{templates/beamerthemekit}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\titleimage{road}
+
+\newcommand{\tagline}{A closer look at Methods and Constructors}
+\newcommand{\quotes}[1]{``#1''}
+
+\title[Programmieren\hspace{2.5pt}--\hspace{2.5pt}\tagline]{\tagline}
+\subtitle{Programmieren~\textbar~Tutorium 32}
+
+\author{YouniS Bensalah}
+\date{21. November 2016}
+
+\institute{Chair for Software Design and Quality}
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% remove annoying figure prefix in caption
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\selectlanguage{english}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% \begin{frame}{Heute}
+%     \tableofcontents
+% \end{frame}
+
+\section{Organisatorisches}
+
+\begin{frame}{Prüfungsanmeldung}
+    \begin{itemize}
+        \item Im \textbf{Studiportal} anmelden
+        \begin{itemize}
+            \item \texttt{https://campus.studium.kit.edu}
+
+        \end{itemize}
+    \end{itemize}
+    \begin{itemize}
+        \item \textbf{CAS} $\rightarrow$ Anmeldung online (Info, InWi)
+        \item \textbf{HISPOS} $\rightarrow$ Anmeldung entweder online oder über blauen Schein
+        \begin{itemize}
+            \item \alert{Sehr zeitnah im Studienbüro vorbeigehen!}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Praktomat}
+    \begin{itemize}
+        \item Im \textbf{Praktomat} anmelden
+        \begin{itemize}
+            \item \url{https://praktomat.cs.kit.edu/2016_WS}
+        \end{itemize}
+        \item \alert{\textbf{Hier gebt ihr die Übungsaufgaben ab!!!!!!!1!!?????????????}}
+        \item Login via KIT-Account (uxxxx)
+        \item Zugang von außerhalb über VPN
+        \begin{itemize}
+            \item \url{https://www.scc.kit.edu/dienste/vpn.php}
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{ILIAS}
+    \begin{itemize}
+        \item Im \textbf{ILIAS} anmelden
+        \begin{itemize}
+            \item \url{https://ilias.studium.kit.edu}
+        \end{itemize}
+        \item \textbf{Forum zu Vorlesung und Übungsaufgaben}
+        \item Login via KIT-Account (uxxxx)
+        \item \alert{Kurs \textit{Programmieren} beitreten!}
+    \end{itemize}
+\end{frame}
+
+
+
+\section{Methoden}
+
+\begin{frame}{Methoden}
+    \begin{itemize}
+        \item \textbf{Methoden beschreiben das Verhalten von Objekten}
+        \pause
+        \item Alle Objekte vom gleichen Typ können die gleichen Funktionen ausführen
+        \begin{itemize}
+            \item \textit{Alle Ampeln können von Rot auf Grün schalten}
+        \end{itemize}
+        \pause
+        \vspace{.2in}
+        \item Methoden können\dots
+        \begin{itemize}
+            \item Berechnungen durchführen
+            \item Werte züruckgeben
+            \item den Zustand eines Objekts verändern
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{This}
+    \begin{itemize}
+        \item \texttt{this}
+        \begin{itemize}
+            \item Referenz auf aktuelles Objekt
+            \item Sichtbar in jeder (nicht-statischen) Methode
+            \item Vordefiniert!
+            \item Erlaubt Zugriff auf Attribute und Methoden des aktuellen Objekts
+            \item Explizite Unterscheidung zwischen Attributen und lokalen Variablen
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{This}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\Huge]
+this.name
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{This}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public void sayName() {
+    System.out.println(this.name);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Parameter}
+    \begin{itemize}
+        \item Ein Parameter
+        \begin{itemize}
+            \item ist eine Variable
+            \item enthält an Methode übergebenen Wert
+        \end{itemize}
+        \item Eine Methode kann 0, 1 oder mehrere Parameter haben
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Formaler vs. aktueller Parameter}
+    \begin{itemize}
+        \item \textbf{Formaler Parameter}
+        \begin{itemize}
+            \item Bezeichner, der in einer Methode verwendet wird
+            \item $x$ ist formaler Parameter in $f(x) := e^x$
+        \end{itemize}
+        \vspace{.2in}
+        \item \textbf{Aktueller Parameter}
+        \begin{itemize}
+            \item Tatsächlicher Wert, der an die Methode durch den Aufrufer übergeben wird
+            \item $42$ ist aktueller Parameter in $f(42)$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Formaler vs. aktueller Parameter}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+// something: formaler parameter
+public void say(String something) {
+    System.out.println(something);
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+String name = "Steve";
+// name: aktueller parameter
+student.say(name);
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Rückgabewert}
+    \begin{itemize}
+        \item Eine Methode \textit{kann} einen Rückgabewert liefern
+        \item Rückgabetyp \texttt{void} $\rightarrow$ \textbf{kein} Rückgabewert
+    \end{itemize}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public int getHeight() {
+    return this.height;
+}
+
+public void setWidth(int w) {
+    this.width = w;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\section{Konstruktoren}
+
+\begin{frame}{Konstruktoren}
+    \begin{itemize}
+        \item Ein \textbf{Konstruktor} ist eine spezielle \textbf{Methode}, die beim \textbf{Erstellen eines neuen Objekts} (\texttt{new}) aufgerufen wird
+        \item \textbf{Attribute} sollen \textbf{initialisiert} werden
+        \item Das neue Objekt startet in \textbf{gültigem Zustand}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Default-Konstruktor}
+    \begin{itemize}
+        \item Java stellt für jede Klasse zunächst einen \textbf{Default-Konstruktor} zur Verfügung
+        \item Keine Argumente!
+        \item Alle Attribute werden mit \textit{Null} initialisiert
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Default Values}
+    \textbf{Null?}
+    \vspace{.2in}
+    \begin{itemize}
+        \item \texttt{byte}, \texttt{short}, \texttt{int} $\rightarrow$ \texttt{0}
+        \item \texttt{long} $\rightarrow$ \texttt{0l}
+        \item \texttt{float} $\rightarrow$ \texttt{0.0f}
+        \item \texttt{double} $\rightarrow$ \texttt{0.0d}
+        \item \texttt{char} $\rightarrow$ \texttt{'\textbackslash u0000'}
+        \item \texttt{boolean} $\rightarrow$ \texttt{false}
+        \item Objekte $\rightarrow$ \texttt{null}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Default-Konstruktor}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Cat {}
+
+// call default constructor
+Cat garfield = new Cat();
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{Default-Konstruktor}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+class AmazonProduct {
+
+    private double price;
+    private int quantity;
+    private String identifier;
+    private boolean primeEligible;
+
+    public void display() {
+        System.out.println("Price: "            + this.price);
+        System.out.println("Quantity: "         + this.quantity);
+        System.out.println("Identifier: "       + this.identifier);
+        System.out.println("Prime eligible: "   + this.primeEligible);
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Default-Konstruktor}
+\begin{exampleblock}{}
+    \begin{lstlisting}[language=Java]
+(new AmazonProduct()).display();
+    \end{lstlisting}
+\end{exampleblock}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}
+Price: 0.0
+Quantity: 0
+Identifier: null
+Prime eligible: false
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Konstruktoren}
+    \center
+    \Huge{Ich will aber meinen eigenen Konstruktor definieren!}
+\end{frame}
+
+\begin{frame}{Eigenen Konstruktor definieren}
+    \begin{itemize}
+        \item Konstruktoren sind doch \textbf{Methoden}!
+        \pause
+        \item \textit{Also Definition wie bei Methoden?}
+        \pause
+        \item Fast!
+        \begin{itemize}
+            \item Kein Rückgabetyp!
+            \item Nein, auch nicht \texttt{void}
+            \item Name der Methode $==$ Name der Klasse
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{title}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Cat {
+    private int lives;
+
+    public Cat() {
+        this.lives = 9;
+    }
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+
+
+\section{Overloading}
+
+\begin{frame}{Overloading}
+    body
+\end{frame}
+
+\appendix
+
+\beginbackup
+
+\begin{frame}{Fragen?}
+    \begin{figure}
+        \includegraphics[scale=.32]{img/Question-Rage-Face.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Bis nächste Woche!}
+    \begin{figure}
+        \includegraphics[scale=.32]{img/dt161111.jpg}
+        \caption{\footnotesize{dilbert.com}}
+    \end{figure}
+\end{frame}
+
+\backupend
+
+\end{document}
