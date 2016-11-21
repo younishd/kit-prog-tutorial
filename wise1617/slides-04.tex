@@ -74,7 +74,7 @@
         \begin{itemize}
             \item \url{https://praktomat.cs.kit.edu/2016_WS}
         \end{itemize}
-        \item \alert{\textbf{Hier gebt ihr die Übungsaufgaben ab!!!!!!!1!!?????????????}}
+        \item \alert{\textbf{Da gebt ihr die Übungsaufgaben ab}}
         \item Login via KIT-Account (uxxxx)
         \item Zugang von außerhalb über VPN
         \begin{itemize}
@@ -103,12 +103,10 @@
 \begin{frame}{Methoden}
     \begin{itemize}
         \item \textbf{Methoden beschreiben das Verhalten von Objekten}
-        \pause
         \item Alle Objekte vom gleichen Typ können die gleichen Funktionen ausführen
         \begin{itemize}
             \item \textit{Alle Ampeln können von Rot auf Grün schalten}
         \end{itemize}
-        \pause
         \vspace{.2in}
         \item Methoden können\dots
         \begin{itemize}
@@ -121,11 +119,11 @@
 
 \begin{frame}{This}
     \begin{itemize}
-        \item \texttt{this}
+        \item \Huge{\texttt{this}}
         \begin{itemize}
             \item Referenz auf aktuelles Objekt
+            \item Vordefinierte Variable
             \item Sichtbar in jeder (nicht-statischen) Methode
-            \item Vordefiniert!
             \item Erlaubt Zugriff auf Attribute und Methoden des aktuellen Objekts
             \item Explizite Unterscheidung zwischen Attributen und lokalen Variablen
         \end{itemize}
@@ -138,6 +136,9 @@
 this.name
         \end{lstlisting}
     \end{exampleblock}
+    \begin{itemize}
+        \item Das Attribut \texttt{name} von \textbf{DIESER} Instanz
+    \end{itemize}
 \end{frame}
 
 
@@ -151,13 +152,28 @@ public void sayName() {
     \end{exampleblock}
 \end{frame}
 
+\begin{frame}{Tipp 17: Always write \texttt{this}}
+    \begin{itemize}
+        \item Immer explizit \texttt{this} schreiben!
+        \item Code ist sofort klarer
+        \item Keine Verwechslungsgefahr zwischen Attributen und lokalen Variablen
+        \item Vermeidet unabsichtliche Überdeckung von Attributen durch lokale Variablen
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipp 17: Always write \texttt{this}}
+    \center
+    \Huge{Just do it!}
+\end{frame}
+
 \begin{frame}{Parameter}
     \begin{itemize}
-        \item Ein Parameter
+        \item Ein \textbf{Parameter}\dots
         \begin{itemize}
             \item ist eine Variable
             \item enthält an Methode übergebenen Wert
         \end{itemize}
+        \vspace{.2in}
         \item Eine Methode kann 0, 1 oder mehrere Parameter haben
     \end{itemize}
 \end{frame}
@@ -189,8 +205,8 @@ public void say(String something) {
     \end{exampleblock}
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java]
-String name = "Steve";
 // name: aktueller parameter
+String name = "Steve";
 student.say(name);
         \end{lstlisting}
     \end{exampleblock}
@@ -217,24 +233,32 @@ public void setWidth(int w) {
 \section{Konstruktoren}
 
 \begin{frame}{Konstruktoren}
-    \begin{itemize}
-        \item Ein \textbf{Konstruktor} ist eine spezielle \textbf{Methode}, die beim \textbf{Erstellen eines neuen Objekts} (\texttt{new}) aufgerufen wird
-        \item \textbf{Attribute} sollen \textbf{initialisiert} werden
-        \item Das neue Objekt startet in \textbf{gültigem Zustand}
-    \end{itemize}
+    \begin{block}{}
+        \begin{itemize}
+            \item Ein \textbf{Konstruktor} ist eine spezielle \textbf{Methode}, die beim \textbf{Erstellen eines neuen Objekts} (\texttt{new}) aufgerufen wird
+            \item \textbf{Attribute} sollen \textbf{initialisiert} werden
+            \item Das neue Objekt startet in \textbf{gültigem Zustand}
+        \end{itemize}
+    \end{block}
+
+
 \end{frame}
 
 \begin{frame}{Default-Konstruktor}
-    \begin{itemize}
-        \item Java stellt für jede Klasse zunächst einen \textbf{Default-Konstruktor} zur Verfügung
-        \item Keine Argumente!
-        \item Alle Attribute werden mit \textit{Null} initialisiert
-    \end{itemize}
+    \begin{block}{}
+        \begin{itemize}
+            \item Java stellt für jede Klasse zunächst einen \textbf{Default-Konstruktor} zur Verfügung
+            \item Keine Argumente
+            \item Alle Attribute werden mit \textit{Null} initialisiert
+        \end{itemize}
+    \end{block}
+
+
 
 \end{frame}
 
 \begin{frame}[fragile]{Default Values}
-    \textbf{Null?}
+    \textit{Null?}
     \vspace{.2in}
     \begin{itemize}
         \item \texttt{byte}, \texttt{short}, \texttt{int} $\rightarrow$ \texttt{0}
@@ -303,7 +327,7 @@ Prime eligible: false
 
 \begin{frame}{Konstruktoren}
     \center
-    \Huge{Ich will aber meinen eigenen Konstruktor definieren!}
+    \Huge{Ich will aber meinen eigenen Konstruktor definieren}
 \end{frame}
 
 \begin{frame}{Eigenen Konstruktor definieren}
@@ -314,40 +338,458 @@ Prime eligible: false
         \pause
         \item Fast!
         \begin{itemize}
-            \item Kein Rückgabetyp!
+            \item Kein Rückgabetyp
             \item Nein, auch nicht \texttt{void}
             \item Name der Methode $==$ Name der Klasse
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{title}
+\begin{frame}[fragile]{Eigenen Konstruktor definieren}
     \begin{exampleblock}{}
         \begin{lstlisting}[language=Java]
 class Cat {
+
     private int lives;
 
     public Cat() {
         this.lives = 9;
     }
+
 }
         \end{lstlisting}
-
     \end{exampleblock}
-
 \end{frame}
 
+\begin{frame}[fragile]{Eigenen Konstruktor definieren}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Dog {
+
+    private String name;
+
+    public Dog(String name) {
+        this.name = name;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Eigenen Konstruktor aufrufen}
+    \begin{itemize}
+        \item \textit{Wie rufe ich nun meinen Konstruktor auf?}
+    \end{itemize}
+
+    \vspace{.2in}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\huge]
+Dog odie = new Dog("Odie");
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Default-Konstruktor}
+    \begin{itemize}
+        \item \textit{Und was ist jetzt mit dem Default-Konstruktor von eben?}
+        \item Sobald man einen eigenen Konstruktor definiert, \alert{\textbf{verschwindet der Default-Konstruktor}} von Java!
+    \end{itemize}
+    \begin{alertblock}{}
+        \begin{lstlisting}[language=Java]
+Dog odie = new Dog(); // geht nicht mehr
+        \end{lstlisting}
+    \end{alertblock}
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textit{Schade\dots}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eigene Konstruktoren}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public Dog() {}
+
+public Dog(String name) {
+    this.name = name;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{lstlisting}[language=Java]
+Dog struppi = new Dog("Struppi");
+Dog odie    = new Dog(); // geht jetzt wieder
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Eigene Konstruktoren}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public Dog() {
+    this.name = "Odie";
+}
+
+public Dog(String name) {
+    this.name = name;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{lstlisting}[language=Java]
+Dog struppi = new Dog("Struppi");
+Dog odie    = new Dog();
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Eigene Konstruktoren}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public Dog() {
+    this("Odie");
+}
+
+public Dog(String name) {
+    this.name = name;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{lstlisting}[language=Java]
+Dog struppi = new Dog("Struppi");
+Dog odie    = new Dog();
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Eigene Konstruktoren}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public Dog()            { ... }
+public Dog(String name) { ... }
+        \end{lstlisting}
+    \end{exampleblock}
+    \vspace{.2in}
+    \begin{itemize}
+        \item \textit{Hä\dots wieso geht das überhaupt?}
+        \pause
+        \item \textbf{Overloading!} (stay tuned)
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Eigener Konstruktor: aber warum?}
+    \begin{itemize}
+        \item Ich will selbst bestimmen, mit welchen Werten ein neues Objekt initialisiert werden soll
+        \item Welche Anfangswerte machen für meine Klasse Sinn?
+        \item Anfangswerte könnten als Parameter übergeben werden
+        \item Ich will prüfen, ob übergebene Werte auch gültig sind
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor: aber warum?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Fraction {
+
+    private int numerator;
+    private int denominator;
+
+    public int approximate() {
+        return this.numerator / this.denominator;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor: aber warum?}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+Fraction f = new Fraction();
+int a = f.approximate();
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{DIVIDE BY ZERO}
+    \begin{figure}
+        \includegraphics[scale=.35]{img/dividebyzero.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor: aber aber aber}
+    \begin{alertblock}{}
+        Exception in thread "main" java.lang.ArithmeticException: / by zero
+    \end{alertblock}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+return this.numerator / this.denominator;
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{itemize}
+        \item \alert{\texttt{this.denominator} wurde vom Default-Konstruktor mit \texttt{0} initialisiert}
+        \item Schlechte Idee als Startwert
+        \item Aber: \textbf{Java kann das nicht ahnen!}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Eigener Konstruktor: aber aber aber}
+    Der Entwickler der Klasse muss also dafür sorgen, dass\dots
+    \begin{itemize}
+        \item Attribute mit gültigen Werten initialisiert werden
+        \item Objekte nicht im Laufe der Anwendung in einen ungültigen Zustand geraten
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eigener Konstruktor: schon besser}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Fraction {
+
+    private int numerator;
+    private int denominator;
+
+    public Fraction() {
+        this.numerator = 0;
+        this.denominator = 1;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
 
 
 \section{Overloading}
 
+\begin{frame}{Mehrere Konstruktoren}
+    \begin{itemize}
+        \item Java erlaubt es, \textbf{mehrere Konstruktoren} zu definieren
+        \item Die Konstruktoren müssen sich in \textbf{Anzahl oder Typ der Parameter} unterscheiden
+        \item Erzeugen eines Objekts auf verschiedene Weise möglich
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Mehrere Konstruktoren}
+    \begin{lstlisting}[language=Java]
+class Color {
+
+    public Color(int red, int green, int blue) { ... }
+
+    public Color(String hex) { ... }
+
+    public Color() { ... }
+
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Mehrere Konstruktoren}
+    \begin{lstlisting}[language=Java]
+Color lime, blue, black;
+
+lime    = new Color(180, 255, 32);
+blue    = new Color("4ABAFF");
+black   = new Color();
+    \end{lstlisting}
+
+\end{frame}
+
+
 \begin{frame}{Overloading}
-    body
+    \begin{itemize}
+        \item Allgemein ist es erlaubt, \textbf{mehrere Methoden mit dem gleichen Namen} zu definieren
+        \item Das nennt sich \textbf{Overloading}
+        \item Methoden müssen sich in \textbf{Anzahl oder Typ der Parameter} unterscheiden
+        \item Spezialfall: mehrere Konstruktoren
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Überladen von Methoden}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public void rotate(double angle) {
+    // ...
+}
+
+public void rotate(Vector2D center, double angle) {
+    // ...
+}
+        \end{lstlisting}
+    \end{exampleblock}
 \end{frame}
 
 \appendix
 
 \beginbackup
+
+\begin{frame}{Getter und Setter}
+    \begin{block}{}
+        \textit{Getter} bezeichnet eine Methode zur \textbf{Abfrage} von Attributen
+    \end{block}
+
+    \begin{block}{}
+        \textit{Setter} bezeichnet eine Methode zum \textbf{Setzen} von Attributen
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Getter und Setter}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public double getTemperature() {
+    return this.temperature;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public void setTemperature(double temperature) {
+    this.temperature = temperature;
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Statische Methoden und Attribute}
+    \begin{itemize}
+        \item Statische Methoden und Attribute sind \textbf{unabhängig vom Zustand eines Objekts}
+        \item Schlüsselwort \texttt{static}
+        \item In statischen Methoden\dots
+        \begin{itemize}
+            \item Kein Zugriff auf (nicht-statische) Attribute oder Methoden
+            \item Kein \texttt{this}
+        \end{itemize}
+        \item Aufruf bzw. Zugriff über \textbf{Klassenname} anstatt Instanzvariable
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Statische Methoden und Attribute}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+class WeatherStation {
+
+    public static double convertToFahrenheit(double celsius) {
+        return (celsius * 9.0) / 5.0 + 32.0;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+    \begin{lstlisting}[language=Java]
+double t = WeatherStation.convertToFahrenheit(8.0);
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Statische Methoden und Attribute}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+class WeatherStation {
+
+    // count how many times we convert stuff
+    public static int convertionCounter = 0;
+
+    public static double convertToFahrenheit(double celsius) {
+        WeatherStation.convertionCounter++;
+        return (celsius * 9.0) / 5.0 + 32.0;
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Methodenaufruf: Wert vs. Referenz}
+    \begin{itemize}
+        \item Objekte als Parameter werden \textbf{als Referenz} an die Methode übergeben
+        \item Sonstige Parameter (primitive Datentypen) werden \textbf{als Wert} übergeben
+        \vspace{.2in}
+        \item \textbf{als Referenz}\dots
+        \begin{itemize}
+            \item Methode erhält \textbf{Referenz} auf Objekt im Speicher
+            \item Objekt kann also von der Methode \textbf{verändert} werden
+        \end{itemize}
+        \item \textbf{als Wert}\dots
+        \begin{itemize}
+            \item Methode erhält \textbf{Kopie} der Variable
+            \item Änderungen innerhalb der Methode haben \textbf{keine Auswirkung nach außen}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Methodenaufruf: Wert vs. Referenz}
+    \begin{alertblock}{}
+        \begin{lstlisting}[language=Java]
+class BadMath {
+    public static void square(int x) {
+        x = x * x;
+    }
+}
+        \end{lstlisting}
+    \end{alertblock}
+
+    \begin{lstlisting}[language=Java]
+int number = 42;
+BadMath.square(number);
+System.out.println(number); // 42
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Methodenaufruf: Wert vs. Referenz}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class GoodMath {
+    public static int square(int x) {
+        return x * x;
+    }
+}
+        \end{lstlisting}
+    \end{exampleblock}
+
+    \begin{lstlisting}[language=Java]
+int number = 42;
+number = GoodMath.square(number);
+System.out.println(number); // 1764
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Methodenaufruf: Wert vs. Referenz}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Dog {
+    
+    public void swapNames(Dog dog) {
+        String tmp = this.name;
+        this.name = dog.name;
+        dog.name = tmp;
+    }
+
+    public void sayName() {
+        System.out.println("Wauwau " + this.name);
+    }
+
+}
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Methodenaufruf: Wert vs. Referenz}
+    \begin{lstlisting}[language=Java]
+Dog odie = new Dog("Odie");
+Dog struppi = new Dog("Struppi");
+
+struppi.swapNames(odie);
+
+odie.sayName();
+struppi.sayName();
+    \end{lstlisting}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}
+Wauwau Struppi
+Wauwau Odie
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
 
 \begin{frame}{Fragen?}
     \begin{figure}
