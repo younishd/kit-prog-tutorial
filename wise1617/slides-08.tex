@@ -1,0 +1,434 @@
+%%
+%% kit-prog-tutorial
+%%
+%% Slides for my Java programming tutorial at KIT using LaTeX beamer.
+%%
+%% Copyright (c) 2015-2016 YouniS Bensalah <younis.bensalah@gmail.com>
+%%
+%% This work is released to the public domain.
+%% For the full copyright and license information, please view the LICENSE file.
+%%
+
+\documentclass[18pt]{beamer}
+
+\usepackage{templates/beamerthemekit}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\titleimage{road}
+
+\definecolor{lime}{HTML}{8FFF53}
+
+\newcommand{\tagline}{Interfaces and Generics}
+
+\newcommand{\quotes}[1]{``#1''}
+
+\title[Programmieren\hspace{2.5pt}--\hspace{2.5pt}\tagline]{\tagline}
+\subtitle{Programmieren~\textbar~Tutorium 32}
+
+\author{YouniS Bensalah}
+\date{19. Dezember 2016}
+
+\institute{Chair for Software Design and Quality}
+
+\usepackage[citestyle=authoryear,bibstyle=numeric,hyperref,backend=biber]{biblatex}
+\addbibresource{templates/example.bib}
+\bibhang1em
+
+\begin{document}
+
+% remove annoying figure prefix in caption
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\selectlanguage{english}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% \begin{frame}{Heute}
+%     \tableofcontents
+% \end{frame}
+
+\section{Interfaces}
+
+\begin{frame}{Interfaces}
+    \textbf{Interfaces} stellen Schnittstellen dar
+    \begin{itemize}
+        \item Ein Interface ist eine Sammlung von Methodensignaturen \textit{ohne} Implementierung
+        \item Eine Klasse kann ein \textbf{Interface} implementieren
+        \item Die implementierende Klasse muss dann \textbf{jede Methode} des Interfaces implementieren
+        \item Eine Klasse kann auch \textbf{mehrere Interfaces} gleichzeitig implementieren
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public interface Eatable {
+
+    public void consume();
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public class Orange implements Eatable {
+
+    @Override
+    public void consume() {
+        System.out.println("Peel first, then eat.");
+    }
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+
+    Das geht auch\dots
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+public abstract class Fruit implements Eatable {
+
+    @Override
+    public abstract void consume();
+
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+\end{frame}
+
+
+\begin{frame}[fragile]{instanceof-Operator}
+    Mit \textbf{instanceof} kann geprüft werden, ob ein gegebenes Objekt von einem bestimmten Typ ist
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+Fruit fruit;
+// ...
+
+if (fruit instanceof Orange) {
+    System.out.println("This is an Orange.");
+} else {
+    System.out.println("This is a random Fruit.");
+}
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+    \pause
+
+    \alert{\textbf{instanceof} sollte sehr sparsam verwendet werden!}
+
+\end{frame}
+
+\begin{frame}[fragile]{Typecast}
+    \begin{lstlisting}
+(Type) variable
+    \end{lstlisting}
+
+    \vspace{.2in}
+    \begin{itemize}
+        \item Up-Cast
+            \begin{itemize}
+                \item ist immer erlaubt, da \textbf{is-a} Beziehung gilt
+                \item wird bei Zuweisungen und Methodenaufrufen implizit ausgeführt
+            \end{itemize}
+        \item Down-Cast
+        \begin{itemize}
+            \item kann zu Laufzeitfehler führen
+            \item ist immer explizit
+            \item sollte vorher mit \textbf{instanceof} geprüft werden
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Generics}
+
+\begin{frame}{Generics}
+    Die Idee bei Generics ist, dass man auch \textbf{Typen als Parameter} an Klassen und Methoden übergeben kann.
+\end{frame}
+
+\begin{frame}{Generics}
+    \textbf{Typen als Parameter? Was bringt das?}
+    \begin{itemize}
+        \item Man kann zum Zeitpunkt der Implementierung noch unbekannte Typen durch Variablen ersetzen
+        \item Container-Datentypen können somit unabhängig vom Typ der Daten sein
+        \begin{itemize}
+            \item Eine Liste muss nicht wissen, welche Art von Daten sie später mal enthält
+            \item Das Prinzip von verketteten Listen funktioniert immer gleich, egal welchen Typ die einzelnen Elemente haben
+        \end{itemize}
+        \item Kein redundanter Code
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Generics: Syntax}
+
+    \begin{exampleblock}{}
+        \begin{lstlisting}[language=Java]
+class Foo<T> { ... }
+
+Foo<Bar> x = new Foo<Bar>();
+        \end{lstlisting}
+
+    \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Generics: Beispiel}
+    \begin{lstlisting}[language=Java]
+/**
+ * Generic version of the Box class.
+ * @param <T> the type of the value being boxed
+ */
+public class Box<T> {
+    // T stands for "Type"
+    private T t;
+
+    public void set(T t) { this.t = t; }
+    public T get() { return t; }
+}
+    \end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Generics: Beispiel}
+    \begin{lstlisting}[language=Java]
+Box<Integer> integerBox = new Box<Integer>();
+    \end{lstlisting}
+
+\end{frame}
+
+\begin{frame}{Generics: Naming Conventions}
+    \begin{itemize}
+        \item E - Element (used extensively by the Java Collections Framework)
+        \item K - Key
+        \item N - Number
+        \item T - Type
+        \item V - Value
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Generics: Bounded Type Parameters}
+    \begin{itemize}
+        \item Manchmal sinnvoll, den generischen Typ \textbf{einzuschränken}
+        \item Beispiel: \textit{\texttt{T} soll bitte Unterklasse von \texttt{Animal} sein!}
+    \end{itemize}
+
+    \begin{lstlisting}[language=Java]
+class Box<T extends Fruit> { ... }
+
+Box<Integer> intBox = new Box<Integer>(); // nope
+Box<Orange> orangeBox = new Box<Orange>(); // ok
+    \end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Generics: Wildcards}
+    \begin{itemize}
+        \item $?$ nennt sich Wildcard
+        \item \texttt{$?$ extends Foo} kann jeder Typ sein, der \texttt{Foo} erweitert (oder \texttt{Foo} selbst)
+
+    \end{itemize}
+    \begin{lstlisting}[language=Java]
+public static void foo(Box<? extends Fruit> b) { ... }
+    \end{lstlisting}
+
+    \begin{itemize}
+        \item \texttt{b} könnte z.B. \texttt{Box<Orange>} oder \texttt{Box<Apple>} sein
+        \item Aber auch \texttt{Box<Fruit>}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Generics: Diamond}
+    \begin{itemize}
+        \item Compiler kann den Typ aus dem Kontext schließen
+        \item Weniger Schreibarbeit
+    \end{itemize}
+    \begin{lstlisting}[language=Java]
+Box<Integer> integerBox = new Box<>();
+    \end{lstlisting}
+
+\end{frame}
+
+\appendix
+\beginbackup
+
+\begin{frame}{Checkstyle}
+    \begin{itemize}
+        \item Anzahl vorgegebener Regeln, die den Programmierer \quotes{zwingen}, sauberen und lesbaren Code zu schreiben
+        \item Diese Regeln werden in einer Checkstyle-XML-Datei zusammengefasst und können automatisch überprüft werden
+        \item Nicht nur der Compiler muss den Code verstehen !
+        \item Gecheckt werden\dots
+        \begin{itemize}
+            \item Whitespaces
+            \item Namenskonventionen
+            \item JavaDoc
+        \end{itemize}
+        \item Siehe \textit{Checkstyle} in der \textit{Programmieren Wiki} im ILIAS\\
+        \url{https://ilias.studium.kit.edu/goto.php?target=wiki_462045_Checkstyle}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Gleichheit von Objekten}
+    \begin{itemize}
+        \item In Java gibt es zwei Möglichkeiten, auf Gleichheit zu prüfen
+        \begin{itemize}
+            \item \texttt{"=="}\\
+            Prüft auf Wert-Gleichheit
+
+            \item \texttt{equals}\\
+            Prüft auf inhaltliche Objekt-Gleichheit
+        \end{itemize}
+        \item Klasse kann \texttt{equals}-Methode \textbf{überladen} und Gleichheit von zwei Objekten selbst definieren
+        \item \alert{Bei \textbf{Objekten} ist Wert-Gleichheit gerade \textbf{Gleichheit der Referenz}!}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Debugging}
+    \textbf{Debugging}: Finden und Entfernen von Fehlern (Bugs) in einem Programm
+\end{frame}
+
+\begin{frame}{Debugging}
+    Praktische Tipps:
+    \begin{itemize}
+        \item Code erneut durchlesen
+        \item Verschiedene Eingaben testen und genau auf Resultat achten
+        \item Inhalte an verschiedenen Stellen im Programm ausgeben lassen
+        \item An geeigneten Stellen feste Werte reinschreiben und schauen was dann passiert
+        \item Debugger verwenden (\alert{Live Demo})
+        \item \dots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tipp 12: Comment your code.}
+    \begin{itemize}
+        \item Kommentare beschreiben \textbf{Logik}, nicht Java-Syntax
+        \item Javadoc verwenden!
+        \begin{itemize}
+            \item Kurz die Aufgabe der Klasse/Methode beschreiben
+            \item Parameter (Typ und Semantik) (\texttt{@param})
+            \item Rückgabewert (Typ und Semantik) (\texttt{@return})
+            \item Exceptions? (\texttt{@throws})
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Tipp 12: Comment your code.}
+    \begin{itemize}
+        \item Kommentare beschreiben Logik, nicht Java-Syntax.
+    \end{itemize}
+    \begin{columns}[c]
+        \column{.5\textwidth}
+        \begin{alertblock}{Not so good}
+            \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+// check if a bigger than b
+if (a > b) {
+    // check if a bigger than c
+    if (a > c) {
+        // returns a
+        return a;
+    }
+    // returns c
+    return c;
+// check if b bigger than c
+} else if (b > c) {
+    // returns b
+    return b;
+}
+// returns c
+return c;
+            \end{lstlisting}
+        \end{alertblock}
+        \column{.5\textwidth}
+        \begin{exampleblock}{Much better}
+            \begin{lstlisting}[language=Java,basicstyle=\scriptsize]
+// return the maximum of a, b, and c
+if (a > b) {
+    if (a > c) {
+        return a;
+    }
+    return c;
+} else if (b > c) {
+    return b;
+}
+return c;
+            \end{lstlisting}
+        \end{exampleblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Tipp 12: Comment your code.}
+    \begin{itemize}
+        \item Javadoc verwenden!
+    \end{itemize}
+    \begin{exampleblock}{Klasse}
+        \begin{lstlisting}[language=Java,basicstyle=\tiny]
+/**
+ * Recursive descent parser for the recommend command.
+ *
+ * @version 1.1
+ * @author YouniS Bensalah <younis.bensalah@gmail.com>
+ */
+class RecommendParser { ... }
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Tipp 12: Comment your code.}
+    \begin{itemize}
+        \item Javadoc verwenden !
+    \end{itemize}
+    \begin{exampleblock}{Methode}
+        \begin{lstlisting}[language=Java,basicstyle=\tiny]
+/**
+ * Parse the term and return its meaning, i.e., a set of Products.
+ *
+ * @param code The line containing the term.
+ * @return The set of recommended Products.
+ * @throws SyntaxException if the term did not match the specified syntax rules.
+ * @throws InvalidNodeException if the required node does not exist.
+ */
+public Set<Product> parse(String code) throws SyntaxException, InvalidNodeException { ... }
+        \end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Tipp 12: Comment your code.}
+    \begin{itemize}
+        \item \textbf{How to Write Doc Comments for the Javadoc Tool}\\
+        \url{http://www.oracle.com/technetwork/articles/java/index-137868.html}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Fragen?}
+    \begin{figure}
+        \includegraphics[scale=.6]{img/additionalquestions.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Bis nächste Woche!}
+    \begin{figure}
+        \includegraphics[scale=2.5]{img/dt161218.jpg}
+        \caption{\footnotesize{dilbert.com}}
+    \end{figure}
+\end{frame}
+
+\backupend
+
+\end{document}
